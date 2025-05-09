@@ -79,11 +79,11 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
 
 1. Clone o repositório:
     ```sh
-    git clone <URL_DO_REPOSITORIO>
+    git clone <https://github.com/stefannevictoria/projeto-individual.git>
     ```
 2. Navegue até o diretório do projeto:
     ```sh
-    cd nome-do-projeto
+    cd projeto-individual
     ```
 
 3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
