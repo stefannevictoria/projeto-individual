@@ -50,10 +50,13 @@ A modelagem de banco de dados é uma etapa fundamental no desenvolvimento de sis
 
 A modelagem do banco de dados do sistema **Certifica** foi projetada para refletir as principais regras de negócio envolvidas no gerenciamento de eventos acadêmicos e na emissão de certificados. A imagem abaixo apresenta o modelo lógico do banco, incluindo as entidades, atributos e os relacionamentos entre as tabelas.
 
-<div align="center"> <sub> Figura 1: 5 Forças de Porter do parceiro de projeto </sub>
+<div align="center">
+  <sub> Figura 1: 5 Forças de Porter do parceiro de projeto </sub>
 
-![Modelo Lógico](https://res.cloudinary.com/dwewomj84/image/upload/v1746822349/modeloLogico_lod8og.png)
-<sup> Fonte: Autoral, 2025</sup> </div> <br>
+![Modelo Lógico](https://res.cloudinary.com/dwewomj84/image/upload/v1746822349/modeloLogico_lod8og.png) 
+<br>
+  <sup> Fonte: Autoral, 2025</sup>
+</div> <br>
 
 O banco é composto por sete tabelas principais:
 
@@ -71,7 +74,7 @@ Para a construção do Modelo Físico, o modelo lógico foi traduzido para coman
 
 O modelo físico do banco de dados corresponde à implementação concreta da estrutura lógica em um Sistema de Gerenciamento de Banco de Dados (SGBD). Ele especifica, por meio de instruções SQL, a criação das tabelas, os tipos de dados de cada atributo, as chaves primárias e estrangeiras, bem como as restrições de integridade necessárias. Essa etapa é fundamental para garantir que o banco de dados, em ambiente de produção, reflita com precisão as regras de negócio definidas na modelagem lógica.
 
-O arquivo com o Modelo Físico do Banco de Dados pode ser acessado em: <a href="https://github.com/stefannevictoria/projeto-individual/blob/main/src/scripts/init.sql">Modelo Físico</a>.
+O arquivo com o Modelo Físico do Banco de Dados pode ser acessado em: <a href="https://github.com/stefannevictoria/projeto-individual/blob/main/scripts/init.sql">Modelo Físico</a>.
 
 
 ### 3.1.1 BD e Models (Semana 5)
