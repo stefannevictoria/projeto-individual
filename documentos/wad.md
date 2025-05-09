@@ -42,6 +42,8 @@ O nome Certifica foi escolhido por refletir diretamente o propósito da aplicaç
 
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
+A seção 3 apresenta a concepção técnica e estrutural do sistema web **Certifica**, destacando os principais componentes envolvidos no seu desenvolvimento. O objetivo é oferecer uma visão ampla e fundamentada da arquitetura da aplicação, incluindo os aspectos de modelagem de dados, organização das pastas e fluxos principais.
+
 ### 3.1. Modelagem do banco de dados
 
 Esta subseção (3.1) apresenta a modelagem do banco de dados utilizada na construção do sistema Certifica. São exibidos os diagramas relacionais com as entidades, atributos e relacionamentos que estruturam a base de dados, além do modelo físico representado por meio do schema SQL.
@@ -51,7 +53,7 @@ A modelagem de banco de dados é uma etapa fundamental no desenvolvimento de sis
 A modelagem do banco de dados do sistema **Certifica** foi projetada para refletir as principais regras de negócio envolvidas no gerenciamento de eventos acadêmicos e na emissão de certificados. A imagem abaixo apresenta o modelo lógico do banco, incluindo as entidades, atributos e os relacionamentos entre as tabelas.
 
 <div align="center">
-  <sub> Figura 1: 5 Forças de Porter do parceiro de projeto </sub>
+  <sub> Figura 1: Modelo Lógico do Banco de Dados </sub>
 
 ![Modelo Lógico](https://res.cloudinary.com/dwewomj84/image/upload/v1746822349/modeloLogico_lod8og.png) 
 <br>
