@@ -1,10 +1,8 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
 
-**_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final._**
+## Certifica
 
-## Nome do Projeto
-
-#### Autor do projeto
+#### Stefanne Victória Andrade Soares
 
 ## Sumário
 
@@ -16,10 +14,17 @@
 
 <br>
 
-## <a name="c1"></a>1. Introdução (Semana 01)
+## <a name="c1"></a>1. Introdução
 
-*Preencha com até 300 palavras – sem necessidade de fonte.*
-*Descreva brevemente o sistema que você irá desenvolver.*
+A seção 1 tem como objetivo contextualizar a solução desenvolvida.
+
+O Certifica é uma plataforma web desenvolvida para facilitar a organização e o gerenciamento de eventos acadêmicos, como palestras, workshops e seminários. O sistema permite que usuários se cadastrem na plataforma, se inscrevam em eventos e, ao confirmarem presença, recebam automaticamente seus certificados digitais.
+
+A criação de eventos está restrita a usuários vinculados a entidades reconhecidas — como faculdades, ligas acadêmicas ou empresas — garantindo que apenas organizações autorizadas possam ofertar atividades na plataforma. Isso assegura a credibilidade dos eventos e a validade dos certificados emitidos.
+
+Uma das principais funcionalidades do sistema é a geração automatizada de certificados em PDF, que ficam disponíveis ao usuário diretamente na plataforma após a confirmação de sua presença em determinado evento. Essa confirmação é realizada por meio de um código de check-in único, fornecido ao participante.
+
+O nome Certifica foi escolhido por refletir diretamente o propósito da aplicação: certificar a participação de indivíduos em atividades acadêmicas relevantes. Além disso, o nome remete à ideia de confiabilidade, oficialidade e facilidade no acesso a certificados digitais.
 
 ---
 
@@ -37,11 +42,35 @@
 
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
-### 3.1. Modelagem do banco de dados  (Semana 3)
+### 3.1. Modelagem do banco de dados
 
-*Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
+Esta subseção (3.1) apresenta a modelagem do banco de dados utilizada na construção do sistema Certifica. São exibidos os diagramas relacionais com as entidades, atributos e relacionamentos que estruturam a base de dados, além do modelo físico representado por meio do schema SQL.
 
-*Posicione também o modelo físico com o Schema do BD (arquivo .sql)*
+
+A modelagem do banco de dados do sistema **Certifica** foi projetada para refletir as principais regras de negócio envolvidas no gerenciamento de eventos acadêmicos e na emissão de certificados. A imagem abaixo apresenta o modelo lógico do banco, incluindo as entidades, atributos e os relacionamentos entre as tabelas.
+
+<div align="center">
+   <sub>Figura 1: Modelo Lógico do Banco de Dados</sub><br>
+   <img src= "..\assets\modeloLogico.png" width="100%" 
+   alt="Modelo Lógico do Banco de Dados"><br>
+   <sup>Fonte: Autoral, 2025</sup>
+ </div>
+
+O banco é composto por sete tabelas principais:
+
+A tabela `usuario` armazena os dados dos usuários cadastrados na plataforma, contendo atributos como `nome`, `email` e `senha_hash` para autenticação segura. Já a tabela `entidade` representa instituições ou organizações que podem cadastrar eventos, como faculdades, ligas ou empresas. Essas entidades se conectam aos usuários por meio da tabela intermediária `entidade_usuario`, que além de vincular um usuário a uma entidade, também define seu papel (por exemplo, "membro" ou "organizador").
+
+Cada entidade pode criar múltiplos eventos, que são registrados na tabela `evento`, contendo informações como nome, descrição, data, local e duração. A associação entre entidades e eventos é de um para muitos, já que uma entidade pode organizar vários eventos, mas cada evento está vinculado a uma única entidade.
+
+A participação dos usuários nos eventos é registrada na tabela `inscricao`. Essa tabela estabelece uma relação de muitos para muitos entre usuários e eventos, permitindo que um usuário possa se inscrever em diversos eventos, e cada evento tenha múltiplos participantes. Nela, também são armazenados o status de presença e o código de check-in utilizado para confirmar a presença no evento.
+
+A geração dos certificados é feita com base nas inscrições com presença confirmada. A tabela `certificado` associa cada certificado a um único usuário e a um único evento, formando uma relação de muitos para um com ambas as entidades. Cada registro possui o link para o PDF do certificado e a data de emissão.
+
+Essa estrutura garante a integridade referencial do sistema e permite controlar de forma precisa os dados dos participantes, organizadores, eventos e certificados gerados, mantendo a coerência com as regras de negócio da aplicação.
+
+
+O Modelo Físico do Banco de Dados pode ser acessado em: <a href="https://github.com/stefannevictoria/projeto-individual/blob/main/src/scripts/init.sql">Modelo Físico</a>
+
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
