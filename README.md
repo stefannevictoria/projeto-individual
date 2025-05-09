@@ -88,30 +88,31 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
 
 3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
 
-```sh
-npm install
-```
+    ```sh
+    npm install
+    ```
 
 4. Para inicializar o servidor, digite o seguinte comando: 
 
-```sh
-node server.js
-```
+    ```sh
+    node server.js
+    ```
 
-Ou
+    ou
 
-```sh
-npm run start
-```
+    ```sh
+    npm run start
+    ```
 
 5. Para realizar a migração, digite o seguinte comando: 
-```sh
-node scripts/runSQLScript.js
-```
-Ou 
-```sh
-npm run migrations
-```
+    ```sh
+    node scripts/runSQLScript.js
+    ```
+    ou 
+
+    ```sh
+    npm run migrations
+    ```
 
 
 ## 🗃 Histórico de lançamentos
@@ -124,8 +125,11 @@ npm run migrations
     * 
 * 0.2.0 - XX/XX/2024
     * 
-* 0.1.0 - XX/XX/2024
-    *
+* 0.1.0 - 09/05/2025
+    * Atualização do read.me
+    * Introdução (seção 1 do WAD)
+    * Diagrama do banco de dados
+    * Estruturação do projeto e adição do modelo físico
 
 ## 📋 Licença/License
 ```

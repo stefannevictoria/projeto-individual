@@ -46,6 +46,7 @@ O nome Certifica foi escolhido por refletir diretamente o propósito da aplicaç
 
 Esta subseção (3.1) apresenta a modelagem do banco de dados utilizada na construção do sistema Certifica. São exibidos os diagramas relacionais com as entidades, atributos e relacionamentos que estruturam a base de dados, além do modelo físico representado por meio do schema SQL.
 
+A modelagem de banco de dados é uma etapa fundamental no desenvolvimento de sistemas, pois define a estrutura lógica e física para armazenamento, relacionamento e organização das informações utilizadas pela aplicação.
 
 A modelagem do banco de dados do sistema **Certifica** foi projetada para refletir as principais regras de negócio envolvidas no gerenciamento de eventos acadêmicos e na emissão de certificados. A imagem abaixo apresenta o modelo lógico do banco, incluindo as entidades, atributos e os relacionamentos entre as tabelas.
 
@@ -54,22 +55,25 @@ A modelagem do banco de dados do sistema **Certifica** foi projetada para reflet
    <img src= "..\assets\modeloLogico.png" width="100%" 
    alt="Modelo Lógico do Banco de Dados"><br>
    <sup>Fonte: Autoral, 2025</sup>
- </div>
+</div>
 
 O banco é composto por sete tabelas principais:
 
 A tabela `usuario` armazena os dados dos usuários cadastrados na plataforma, contendo atributos como `nome`, `email` e `senha_hash` para autenticação segura. Já a tabela `entidade` representa instituições ou organizações que podem cadastrar eventos, como faculdades, ligas ou empresas. Essas entidades se conectam aos usuários por meio da tabela intermediária `entidade_usuario`, que além de vincular um usuário a uma entidade, também define seu papel (por exemplo, "membro" ou "organizador").
 
-Cada entidade pode criar múltiplos eventos, que são registrados na tabela `evento`, contendo informações como nome, descrição, data, local e duração. A associação entre entidades e eventos é de um para muitos, já que uma entidade pode organizar vários eventos, mas cada evento está vinculado a uma única entidade.
+Cada entidade pode criar múltiplos eventos, que são registrados na tabela `evento`, contendo informações como nome, descrição, data, local e duração. A associação entre entidades e eventos é de um para muitos (1:N), já que uma entidade pode organizar vários eventos, mas cada evento está vinculado a uma única entidade.
 
-A participação dos usuários nos eventos é registrada na tabela `inscricao`. Essa tabela estabelece uma relação de muitos para muitos entre usuários e eventos, permitindo que um usuário possa se inscrever em diversos eventos, e cada evento tenha múltiplos participantes. Nela, também são armazenados o status de presença e o código de check-in utilizado para confirmar a presença no evento.
+A participação dos usuários nos eventos é registrada na tabela `inscricao`. Essa tabela estabelece uma relação de muitos para muitos entre usuários e eventos (N:N), permitindo que um usuário possa se inscrever em diversos eventos, e cada evento tenha múltiplos participantes. Nela, também são armazenados o status de presença e o código de check-in utilizado para confirmar a presença no evento.
 
-A geração dos certificados é feita com base nas inscrições com presença confirmada. A tabela `certificado` associa cada certificado a um único usuário e a um único evento, formando uma relação de muitos para um com ambas as entidades. Cada registro possui o link para o PDF do certificado e a data de emissão.
+A geração dos certificados é feita com base nas inscrições com presença confirmada. A tabela `certificado` associa cada certificado a um único usuário e a um único evento, formando uma relação de muitos para um (1:N) com ambas as entidades. Cada registro possui o link para o PDF do certificado e a data de emissão.
 
 Essa estrutura garante a integridade referencial do sistema e permite controlar de forma precisa os dados dos participantes, organizadores, eventos e certificados gerados, mantendo a coerência com as regras de negócio da aplicação.
 
+Para a construção do Modelo Físico, o modelo lógico foi traduzido para comandos SQL.
 
-O Modelo Físico do Banco de Dados pode ser acessado em: <a href="https://github.com/stefannevictoria/projeto-individual/blob/main/src/scripts/init.sql">Modelo Físico</a>
+O modelo físico do banco de dados corresponde à implementação concreta da estrutura lógica em um Sistema de Gerenciamento de Banco de Dados (SGBD). Ele especifica, por meio de instruções SQL, a criação das tabelas, os tipos de dados de cada atributo, as chaves primárias e estrangeiras, bem como as restrições de integridade necessárias. Essa etapa é fundamental para garantir que o banco de dados, em ambiente de produção, reflita com precisão as regras de negócio definidas na modelagem lógica.
+
+O arquivo com o Modelo Físico do Banco de Dados pode ser acessado em: <a href="https://github.com/stefannevictoria/projeto-individual/blob/main/src/scripts/init.sql">Modelo Físico</a>.
 
 
 ### 3.1.1 BD e Models (Semana 5)
