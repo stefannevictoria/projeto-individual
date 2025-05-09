@@ -1,0 +1,17 @@
+{
+  "name": "projeto_web",
+  "version": "1.0.0",
+  "description": "projeto individual do módulo 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "stefannevictoria",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "pg": "^8.15.6"
+  }
+}
