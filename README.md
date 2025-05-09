@@ -38,19 +38,25 @@ _Coloque aqui o link para seu projeto publicado e link para vídeo de demonstra�
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
-- `assets`: aqui estão os arquivos relacionados a elementos não-estruturados deste repositório, como imagens.
+- `assets/`: aqui estão os arquivos relacionados a elementos não-estruturados deste repositório, como imagens.
 
-- `documentos`: aqui estão todos os documentos do projeto, como o Web Application  Document (WAD).
+- `config/`: Arquivos relacionados à configuração do projeto.
 
-- `src`: Todo o código fonte criado para o desenvolvimento do projeto de aplicação web.
-    - `config`: Arquivos relacionados à configuração do projeto.
-    - `controllers`: Lógica de controle das requisições da aplicação.
-    - `models`: Definições dos modelos de dados utilizados na aplicação.
-    - `routes`: Definição as rotas da aplicação.
-    - `scripts`: Arquivos de JavaScript públicos.
-    - `services`: Serviços auxiliares da aplicação.
-    - `tests`: Arquivos de testes unitários.
-    - `views`: Views da aplicação web.
+- `controllers/`: Lógica de controle das requisições da aplicação.
+
+- `documentos/`: Documentos do projeto, como o Web Application  Document (WAD).
+
+- `models/`: Definições dos modelos de dados utilizados na aplicação.
+
+- `routes/`: Definição as rotas da aplicação.
+
+- `scripts/`: Arquivos de JavaScript públicos.
+
+- `services/`: Serviços auxiliares da aplicação.
+
+- `tests/`: Arquivos de testes unitários.
+
+- `views/`: Views da aplicação web.
 
 - `.env.example`: Arquivo de exemplo para as variáveis de ambiente.
 
@@ -58,33 +64,55 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 - `jest.config.js`: Arquivo de configuração para o framework de testes Jest.
 
+- `package.json`: Informações sobre o projeto e suas dependências.
+
+- `README.md`: Arquivo que serve como guia introdutório e explicação geral sobre o projeto e a aplicação (o mesmo arquivo que você está lendo agora).
+
+- `rest.http`: 
+
 - `server.js`: Arquivo principal que inicializa o servidor da aplicação.
 
-- `README.md`: arquivo que serve como guia introdutório e explicação geral sobre o projeto e a aplicação (o mesmo arquivo que você está lendo agora).
 
-## 💻 Configuração para desenvolvimento e execução do código
-
-*Acrescentar as informações necessárias sobre pré-requisitos (IDEs, bibliotecas, serviços etc.) e instalação básica do projeto, descrevendo eventuais versões utilizadas. Colocar um passo a passo de como o leitor pode baixar o código e executar a aplicação a partir de sua máquina local.*
-
-*exemplo de instruções*
+## 💻 Como inicializar o projeto
 
 Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 
-1. Baixar e instalar o node.js: [https://nodejs.org/pt-br/](https://nodejs.org/pt-br/) (versão 16.15.1 LTS)
-2. Clone o repositório em questão.
-3. No modo administrador, abra o "prompt de comando" ou o "terminal" e, após, abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
+1. Clone o repositório:
+    ```sh
+    git clone <URL_DO_REPOSITORIO>
+    ```
+2. Navegue até o diretório do projeto:
+    ```sh
+    cd nome-do-projeto
+    ```
+
+3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
 
 ```sh
 npm install
 ```
 
-Isso instalará todas as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
+4. Para inicializar o servidor, digite o seguinte comando: 
 
 ```sh
-npm start
+node server.js
 ```
-5. Agora você pode acessar a aplicação através do link http://localhost:1234/
-6. O servidor está online.
+
+Ou
+
+```sh
+npm run start
+```
+
+5. Para realizar a migração, digite o seguinte comando: 
+```sh
+node scripts/runSQLScript.js
+```
+Ou 
+```sh
+npm run migrations
+```
+
 
 ## 🗃 Histórico de lançamentos
 
