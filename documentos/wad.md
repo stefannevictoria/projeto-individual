@@ -50,12 +50,10 @@ A modelagem de banco de dados é uma etapa fundamental no desenvolvimento de sis
 
 A modelagem do banco de dados do sistema **Certifica** foi projetada para refletir as principais regras de negócio envolvidas no gerenciamento de eventos acadêmicos e na emissão de certificados. A imagem abaixo apresenta o modelo lógico do banco, incluindo as entidades, atributos e os relacionamentos entre as tabelas.
 
-<div align="center">
-   <sub>Figura 1: Modelo Lógico do Banco de Dados</sub><br>
-   <img src= "..\assets\modeloLogico.png" width="100%" 
-   alt="Modelo Lógico do Banco de Dados"><br>
-   <sup>Fonte: Autoral, 2025</sup>
-</div>
+<div align="center"> <sub> Figura 1: 5 Forças de Porter do parceiro de projeto </sub>
+
+![Modelo Lógico](https://res.cloudinary.com/dwewomj84/image/upload/v1746822349/modeloLogico_lod8og.png)
+<sup> Fonte: Autoral, 2025</sup> </div> <br>
 
 O banco é composto por sete tabelas principais:
 
