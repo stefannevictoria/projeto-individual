@@ -25,10 +25,10 @@ CREATE TABLE IF NOT EXISTS entidade_usuario (
 CREATE TABLE IF NOT EXISTS evento (
   id SERIAL PRIMARY KEY,
   nome VARCHAR(150) NOT NULL,
-  descricao TEXT,
+  descricao TEXT NOT NULL,
   data DATE NOT NULL,
   local VARCHAR(150) NOT NULL,
-  duracao_horas INT,
+  duracao_horas INT NOT NULL,
   entidade_id INT NOT NULL REFERENCES entidade(id) ON DELETE CASCADE
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS inscricao (
   id SERIAL PRIMARY KEY,
   usuario_id INT NOT NULL REFERENCES usuario(id) ON DELETE CASCADE,
   evento_id INT NOT NULL REFERENCES evento(id) ON DELETE CASCADE,
-  status_presenca BOOLEAN DEFAULT FALSE,
+  status_presenca BOOLEAN NOT NULL DEFAULT FALSE,
   codigo_checkin VARCHAR(100)
 );
 
