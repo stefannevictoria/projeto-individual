@@ -4,4 +4,7 @@ router.get('/', (req, res) => {
   res.send('Rota principal funcionando!');
 });
 
+const eventRoutes = require("./eventRoutes");
+router.use("/eventos", eventRoutes);
+
 module.exports = router;

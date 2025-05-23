@@ -1,1 +1,43 @@
-GET http://localhost:3000/
+GET http://localhost:3000/eventos
+
+### GET - Listar todos os eventos
+GET http://localhost:3000/eventos
+Content-Type: application/json
+
+
+### GET - Buscar um evento por ID
+GET http://localhost:3000/eventos/1
+Content-Type: application/json
+
+
+### POST - Criar um novo evento
+POST http://localhost:3000/eventos
+Content-Type: application/json
+
+{
+  "nome": "Semana da Tecnologia",
+  "descricao": "Evento com palestras e workshops sobre inovação.",
+  "data": "2025-06-20",
+  "local": "Auditório Principal",
+  "duracao_horas": 5,
+  "entidade_id": 1
+}
+
+
+### PUT - Atualizar um evento
+PUT http://localhost:3000/eventos/1
+Content-Type: application/json
+
+{
+  "nome": "Semana da Tecnologia 2025",
+  "descricao": "Evento com palestras atualizadas sobre tecnologia.",
+  "data": "2025-06-21",
+  "local": "Novo Auditório",
+  "duracao_horas": 6,
+  "entidade_id": 1
+}
+
+
+### DELETE - Excluir um evento
+DELETE http://localhost:3000/eventos/1
+Content-Type: application/json

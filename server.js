@@ -1,8 +1,17 @@
 const express = require('express');
 const db = require('./config/db');
+db.connect()
+  .then(() => console.log('Conectado ao banco de dados!'))
+  .catch(err => console.error('Erro ao conectar ao banco de dados:', err));
+
 require('dotenv').config();
 
+const indexRoutes = require('./routes/index');
+
 const app = express();
+
+app.use(express.json());
+app.use('/', indexRoutes);
 
 app.get('/', async (req, res) => {
   try {
