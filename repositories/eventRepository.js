@@ -3,14 +3,17 @@ const eventModel = require('../models/eventModel');
 
 class EventRepository {
     async findAll() {
-        console.log('Buscando eventos no repository');
         const result = await db.query('SELECT nome, descricao, data, local, duracao_horas, entidade_id FROM evento');
         return result.rows.map(row => new eventModel(row));
     }
 
+    async findById(id) {
+        const result = await db.query('SELECT nome, descricao, data, local, duracao_horas, entidade_id FROM evento WHERE id = $1', [id]);
+        return result.rows.length ? new Event(result.rows[0]) : null;
+    }
+
     async create(event) {
         try {
-            console.log("Chegamos no create");
             const result = await db.query(
             `INSERT INTO evento (nome, descricao, data, local, duracao_horas, entidade_id)
             VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
