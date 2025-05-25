@@ -1,10 +1,10 @@
-const eventService = require('../services/eventService');
+const userService = require('../services/userService');
 
 module.exports = {
   async index(req, res) {
     try {
-      const events = await eventService.findAll();
-      res.status(200).json(events);
+      const user = await userService.findAll();
+      res.status(200).json(user);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -13,8 +13,8 @@ module.exports = {
   async find(req, res) {
     try {
       const { id } = req.params;
-      const event = await eventService.findById(id);
-      res.status(200).json(event);
+      const user = await userService.findById(id);
+      res.status(200).json(user);
     } catch (error) {
       res.status(404).json({ error: error.message });
     }
@@ -22,9 +22,9 @@ module.exports = {
 
   async create(req, res) {
     try {
-      const eventData = req.body;
-      const newEvent = await eventService.create(eventData);
-      res.status(201).json(newEvent);
+      const userData = req.body;
+      const newUser = await userService.create(userData);
+      res.status(201).json(newUser);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
@@ -33,9 +33,9 @@ module.exports = {
   async update(req, res) {
     try {
       const { id } = req.params;
-      const eventData = req.body;
-      const updatedEvent = await eventService.update(id, eventData);
-      res.status(200).json(updatedEvent);
+      const userData = req.body;
+      const updatedUser = await userService.update(id, userData);
+      res.status(200).json(updatedUser);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
@@ -44,7 +44,7 @@ module.exports = {
   async delete(req, res) {
     try {
       const { id } = req.params;
-      await eventService.delete(id);
+      await userService.delete(id);
       res.status(204).send();
     } catch (error) {
       res.status(400).json({ error: error.message });

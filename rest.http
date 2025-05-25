@@ -1,4 +1,40 @@
-GET http://localhost:3000/eventos
+GET http://localhost:3000/
+
+### GET - Listar todos os usuários
+GET http://localhost:3000/usuarios
+Content-Type: application/json
+
+
+### GET - Buscar um usuário por ID
+GET http://localhost:3000/usuarios/1
+Content-Type: application/json
+
+
+### POST - Criar um novo usuário
+POST http://localhost:3000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Jeniffer Soares",
+  "email": "jeniffer.soares@gmail.com",
+  "senha_hash": "1234"
+}
+
+
+### PUT - Atualizar um usuário
+PUT http://localhost:3000/usuarios/1
+Content-Type: application/json
+
+{
+  "nome": "Jeniffer Soares",
+  "email": "jeniffer.soares@gmail.com",
+  "senha_hash": "j@1505"
+}
+
+
+### DELETE - Excluir um usuário
+DELETE http://localhost:3000/usuarios/1
+Content-Type: application/json
 
 ### GET - Listar todos os eventos
 GET http://localhost:3000/eventos
