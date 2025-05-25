@@ -10,6 +10,15 @@ GET http://localhost:3000/usuarios/1
 Content-Type: application/json
 
 
+### GET - Listar todas entidades
+GET http://localhost:3000/entidades
+Content-Type: application/json
+
+
+### GET - Buscar uma entidade por ID
+GET http://localhost:3000/entidades/1
+Content-Type: application/json
+
 ### POST - Criar um novo usuário
 POST http://localhost:3000/usuarios
 Content-Type: application/json

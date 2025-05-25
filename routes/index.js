@@ -7,6 +7,9 @@ router.get('/', (req, res) => {
 const userRoutes = require("./userRoutes");
 router.use("/usuarios", userRoutes);
 
+const entityRoutes = require("./entityRoutes");
+router.use("/entidades", entityRoutes);
+
 const eventRoutes = require("./eventRoutes");
 router.use("/eventos", eventRoutes);
 
