@@ -70,7 +70,7 @@ Content-Type: application/json
 
 
 ### PUT - Atualizar um evento
-PUT http://localhost:3000/eventos/1
+PUT http://localhost:3000/eventos/9
 Content-Type: application/json
 
 {
@@ -84,5 +84,5 @@ Content-Type: application/json
 
 
 ### DELETE - Excluir um evento
-DELETE http://localhost:3000/eventos/1
+DELETE http://localhost:3000/eventos/8
 Content-Type: application/json

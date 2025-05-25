@@ -17,7 +17,7 @@ class EventRepository {
             const result = await db.query(
                 `INSERT INTO evento (nome, descricao, data, local, duracao_horas, entidade_id)
                 VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-                [event.nome, event.descricao, event.data, event.local, event.duracao_horas, event.entidade_id, id]
+                [event.nome, event.descricao, event.data, event.local, event.duracao_horas, event.entidade_id]
             );
             return new eventModel(result.rows[0]);
         } catch (error) {
