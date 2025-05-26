@@ -30,6 +30,17 @@ module.exports = {
     }
   },
 
+  async update(req, res) {
+      try {
+        const { id } = req.params;
+        const registrationData = req.body;
+        const updatedRegistration = await eventService.update(id, registrationData);
+        res.status(200).json(updatedRegistration);
+      } catch (error) {
+        res.status(400).json({ error: error.message });
+      }
+    },
+
   async delete(req, res) {
     try {
       const { id } = req.params;

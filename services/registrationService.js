@@ -1,9 +1,9 @@
-const regristrationRepository = require('../repositories/regristrationRepository');
+const registrationRepository = require('../repositories/registrationRepository');
 
 class RegristrationService {
   async findAll() {
     try {
-      return await regristrationRepository.findAll();
+      return await registrationRepository.findAll();
     } catch (error) {
       throw new Error('Erro ao buscar inscrições');
     }
@@ -11,25 +11,35 @@ class RegristrationService {
 
   async findById(id) {
     try {
-      const regristration = await regristrationRepository.findById(id);
-      if (!regristration) throw new Error('Inscrição não encontrada');
-      return regristration;
+      const registration = await registrationRepository.findById(id);
+      if (!registration) throw new Error('Inscrição não encontrada');
+      return registration;
     } catch (error) {
       throw new Error('Erro ao buscar inscrição por ID');
     }
   }
 
-  async create(regristrationData) {
+  async create(registrationData) {
     try {
-      return await regristrationRepository.create(regristrationData);
+      return await regristrationRepository.create(registrationData);
     } catch (error) {
       throw new Error('Erro ao criar inscrição');
     }
   }
 
+  async update(id, registrationData) {
+    try {
+        const updatedRegistration = await eventRepository.update(id, registrationData);
+        if (!updatedRegistration) throw new Error('Inscrição não encontrado para atualização');
+        return updatedRegistration;
+    } catch (error) {
+        throw new Error('Erro ao atualizar inscrição');
+    }
+   }
+
   async delete(id) {
     try {
-      await regristrationRepository.delete(id);
+      await registrationRepository.delete(id);
     } catch (error) {
       throw new Error('Erro ao deletar inscrição');
     }

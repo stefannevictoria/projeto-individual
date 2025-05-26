@@ -86,3 +86,37 @@ Content-Type: application/json
 ### DELETE - Excluir um evento
 DELETE http://localhost:3000/eventos/8
 Content-Type: application/json
+
+
+### GET - Listar todas as inscrições
+GET http://localhost:3000/inscricoes
+Content-Type: application/json
+
+
+### GET - Buscar uma inscrição por ID
+GET http://localhost:3000/inscricoes/1
+Content-Type: application/json
+
+
+### POST - Criar uma nova inscrição
+POST http://localhost:3000/inscricoes
+Content-Type: application/json
+
+{
+  "usuario_id": 3,
+  "evento_id": 5
+}
+
+### PUT - Marcar presença
+PUT http://localhost:3000/inscricoes/1
+Content-Type: application/json
+
+{
+  "status_presenca": true,
+  "codigo_checkin": 1234
+}
+
+
+### DELETE - Excluir uma inscrição
+DELETE http://localhost:3000/inscricoes/1
+Content-Type: application/json

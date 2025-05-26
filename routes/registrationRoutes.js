@@ -8,6 +8,8 @@ router.get('/:id', registrationController.find);
 
 router.post('/', registrationController.create);
 
+router.put('/:id', registrationController.update);
+
 router.delete('/:id', registrationController.delete);
 
 module.exports = router;

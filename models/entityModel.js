@@ -1,5 +1,5 @@
 class Entity {
-    constructor({ id = null, nome, tipo}) {
+    constructor({ id, nome, tipo}) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
