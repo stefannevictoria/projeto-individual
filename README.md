@@ -114,6 +114,14 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
     npm run migrations
     ```
 
+6. Para realizar os testes de endpoints (pré requisitos: migrações feitas e seridor inicializado)
+ **Configure o Postman**:
+   ```sh
+   - Método: GET/POST/PUT/DELETE
+   - URL: http://localhost:3000/[endpoint] (ex: /fregueses)
+   - Body (para POST/PUT): JSON com os dados
+   ```
+  Para mais detalhes sobre os endpoins, [clique aqui](https://github.com/stefannevictoria/projeto-individual/blob/main/documentos/wad.md#c3)
 
 ## 🗃 Histórico de lançamentos
 
