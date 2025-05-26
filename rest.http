@@ -103,8 +103,9 @@ POST http://localhost:3000/inscricoes
 Content-Type: application/json
 
 {
-  "usuario_id": 3,
-  "evento_id": 5
+  "usuario_id": 5,
+  "evento_id": 11,
+  "status_presenca": false
 }
 
 ### PUT - Marcar presença
@@ -112,6 +113,8 @@ PUT http://localhost:3000/inscricoes/1
 Content-Type: application/json
 
 {
+  "usuario_id": 5,
+  "evento_id": 11,
   "status_presenca": true,
   "codigo_checkin": 1234
 }

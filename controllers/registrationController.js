@@ -34,7 +34,7 @@ module.exports = {
       try {
         const { id } = req.params;
         const registrationData = req.body;
-        const updatedRegistration = await eventService.update(id, registrationData);
+        const updatedRegistration = await registrationService.update(id, registrationData);
         res.status(200).json(updatedRegistration);
       } catch (error) {
         res.status(400).json({ error: error.message });

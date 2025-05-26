@@ -1,6 +1,6 @@
 const registrationRepository = require('../repositories/registrationRepository');
 
-class RegristrationService {
+class RegistrationService {
   async findAll() {
     try {
       return await registrationRepository.findAll();
@@ -21,7 +21,7 @@ class RegristrationService {
 
   async create(registrationData) {
     try {
-      return await regristrationRepository.create(registrationData);
+      return await registrationRepository.create(registrationData);
     } catch (error) {
       throw new Error('Erro ao criar inscrição');
     }
@@ -29,7 +29,7 @@ class RegristrationService {
 
   async update(id, registrationData) {
     try {
-        const updatedRegistration = await eventRepository.update(id, registrationData);
+        const updatedRegistration = await registrationRepository.update(id, registrationData);
         if (!updatedRegistration) throw new Error('Inscrição não encontrado para atualização');
         return updatedRegistration;
     } catch (error) {
@@ -46,4 +46,4 @@ class RegristrationService {
   }
 }
 
-module.exports = new RegristrationService();
+module.exports = new RegistrationService();
