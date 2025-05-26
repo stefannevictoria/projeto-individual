@@ -3,12 +3,12 @@ const userModel = require('../models/userModel');
 
 class UserRepository {
     async findAll() {
-        const result = await db.query('SELECT nome, email, senha_hash FROM usuario');
+        const result = await db.query('SELECT id, nome, email, senha_hash FROM usuario');
         return result.rows.map(row => new userModel(row));
     }
 
     async findById(id) {
-        const result = await db.query('SELECT nome, email, senha_hash FROM usuario WHERE id = $1', [id]);
+        const result = await db.query('SELECT id, nome, email, senha_hash FROM usuario WHERE id = $1', [id]);
         return result.rows.length ? new userModel(result.rows[0]) : null;
     }
 

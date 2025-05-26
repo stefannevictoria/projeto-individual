@@ -1,9 +1,9 @@
-const EntityRepository = require('../repositories/entityRepository');
+const entityRepository = require('../repositories/entityRepository');
 
 class EntityService {
   async findAll() {
     try {
-      return await EntityRepository.findAll();
+      return await entityRepository.findAll();
     } catch (error) {
       throw new Error('Erro ao buscar entidade');
     }
@@ -11,7 +11,7 @@ class EntityService {
 
   async findById(id) {
     try {
-      const entity = await EntityRepository.findById(id);
+      const entity = await entityRepository.findById(id);
       if (!entity) throw new Error('Entidade não encontrado');
       return entity;
     } catch (error) {

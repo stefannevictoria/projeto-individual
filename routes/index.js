@@ -16,4 +16,7 @@ router.use("/eventos", eventRoutes);
 const registrationRoutes = require("./registrationRoutes");
 router.use("/inscricoes", registrationRoutes);
 
+const certificateRoutes = require("./certificateRoutes");
+router.use("/certificados", certificateRoutes);
+
 module.exports = router;

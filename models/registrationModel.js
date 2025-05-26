@@ -8,4 +8,4 @@ class Registration {
     }
   }
 
-  module.exports = Registration;
+module.exports = Registration;

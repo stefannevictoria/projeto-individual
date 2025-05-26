@@ -51,7 +51,7 @@ Content-Type: application/json
 
 
 ### GET - Buscar um evento por ID
-GET http://localhost:3000/eventos/1
+GET http://localhost:3000/eventos/11
 Content-Type: application/json
 
 
@@ -122,4 +122,14 @@ Content-Type: application/json
 
 ### DELETE - Excluir uma inscrição
 DELETE http://localhost:3000/inscricoes/1
+Content-Type: application/json
+
+
+### GET - Listar todos certificados
+GET http://localhost:3000/certificados
+Content-Type: application/json
+
+
+### GET - Buscar um certificado por ID
+GET http://localhost:3000/certificados/1
 Content-Type: application/json
