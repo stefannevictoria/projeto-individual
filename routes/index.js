@@ -13,4 +13,7 @@ router.use("/entidades", entityRoutes);
 const eventRoutes = require("./eventRoutes");
 router.use("/eventos", eventRoutes);
 
+const registrationRoutes = require("./registrationRoutes");
+router.use("/inscricoes", registrationRoutes);
+
 module.exports = router;
