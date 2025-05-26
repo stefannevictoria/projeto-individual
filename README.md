@@ -48,6 +48,8 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 - `models/`: Definições dos modelos de dados utilizados na aplicação.
 
+- `repositories`: Responsável pela comunicação com o banco de dados (queries).
+
 - `routes/`: Definição as rotas da aplicação.
 
 - `scripts/`: Arquivos de JavaScript públicos.
