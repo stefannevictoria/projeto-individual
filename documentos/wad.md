@@ -106,9 +106,63 @@ O arquivo com o Modelo Físico do Banco de Dados pode ser acessado em: <a href="
 
 *Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
 
-### 3.6. WebAPI e endpoints (Semana 05)
+### 3.6. WebAPI e endpoints
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+Esta seção (3.6) apresentará os endpoints, que são URLs específicas que permitem a comunicação com uma API. Cada endpoint:
+
+- Representa uma operação do sistema (criar, ler, atualizar ou deletar dados)
+- Combina um método HTTP (GET, POST, PUT, DELETE) com um caminho (ex: /usuario)
+- Segue o padrão REST para integração entre aplicações
+
+Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por funcionalidade.
+
+#### Endpoints da API
+
+**Usuários:**
+
+- **GET** `/usuarios` – Lista todos os usuários
+- **GET** `/usuarios/:id` – Obtém um usuário específico pelo ID
+- **POST** `/usuarios` – Cria um novo usuário
+- **PUT** `/usuarios/:id` – Atualiza um usuário existente
+- **DELETE** `/usuarios/:id` – Remove um usuário
+
+**Entidades:**
+
+- **GET** `/entidades` – Lista todas as entidades
+- **GET** `/entidades/:id` – Obtém uma entidade específica pelo ID
+
+**Eventos:**
+
+- **GET** `/eventos` – Lista todos os eventos
+- **GET** `/eventos/:id` – Obtém um evento específico pelo ID
+- **POST** `/eventos` – Cria um novo evento
+- **PUT** `/eventos/:id` – Atualiza um evento existente
+- **DELETE** `/eventos/:id` – Remove um evento
+
+**Inscrições:**
+
+- **GET** `/inscricoes` – Lista todas as inscrições
+- **GET** `/inscricoes/:id` – Obtém uma inscrição específica pelo ID
+- **POST** `/inscricoes` – Cria uma nova inscrição
+- **PUT** `/inscricoes/:id` – Atualiza o status de presença e check-in da inscrição
+- **DELETE** `/inscricoes/:id` – Remove uma inscrição
+
+**Certificados:**
+
+- **GET** `/certificados` – Lista todos os certificados
+- **GET** `/certificados/:id` – Obtém um certificado específico pelo ID
+
+#### Exemplo de requisição
+
+**Criar um usuário (POST):**
+
+``` javascript
+{
+  "nome": "Jeniffer Soares",
+  "email": "jeniffer.soares@gmail.com",
+  "senha_hash": "1234"
+}
+```
 
 ### 3.7 Interface e Navegação (Semana 07)
 
