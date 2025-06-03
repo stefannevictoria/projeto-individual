@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>certifica</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/homeStyle.css" />
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <img src="/images/certifica_logo.png" alt="CERTIFICA LOGO" />
+    </div>
+
+    <nav>
+      <ul id="anchors" class="nav-links">
+        <li><a href="perfil.ejs">Sobre nós</a></li>
+      </ul>
+      <div id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div id="logo-principal">
+      <img src="/images/certifica_logo.png" alt="CERTIFICA LOGO" />
+    </div>
+
+    <h1 id="main-title">Participe. Aprenda. Certifique-se.</h1>
+    <p id="main-text">
+      Participe de eventos e receba seu certificado digital!
+    </p>
+
+    <div class="button-container">
+      <form action="/usuarios" method="get">
+        <button id="main-btn">Login</button>
+      </form>
+
+      <form action="/usuarios" method="getById">
+        <button id="main-btn">Cadastre-se</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>© 2025 certifica - Todos os direitos reservados.</footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

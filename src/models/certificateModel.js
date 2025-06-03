@@ -4,7 +4,7 @@ class Certificate {
         this.usuario_id = usuario_id;
         this.evento_id = evento_id;
         this.link_pdf = link_pdf;
-        data_emissao = data_emissao;
+        this.data_emissao = data_emissao;
     }
   }
 

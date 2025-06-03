@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res) => {
-  res.send('Rota principal funcionando!');
-});
+
+const landingPageRoutes = require("./landingPageRoutes");
+router.use("/", landingPageRoutes);
 
 const userRoutes = require("./userRoutes");
 router.use("/usuarios", userRoutes);
