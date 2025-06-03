@@ -79,8 +79,42 @@ O modelo físico do banco de dados corresponde à implementação concreta da es
 O arquivo com o Modelo Físico do Banco de Dados pode ser acessado em: <a href="https://github.com/stefannevictoria/projeto-individual/blob/main/scripts/init.sql">Modelo Físico</a>.
 
 
-### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+### 3.1.1 BD e Models 
+Esta seção (3.1.1) descreve os Models implementados no sistema web. 
+
+**User**
+
+Representa os usuários do sistema, responsáveis por se inscreverem e participarem de eventos.
+
+Atributos:
+- id: Identificador único do usuário
+- nome: Nome do usuário
+- email: Endereço de e-mail do usuário
+- senha_hash: Senha criptografada
+
+**Registration**
+
+Registra a inscrição de um usuário em um evento, além do controle de presença e check-in.
+
+Atributos:
+- id: Identificador da inscrição
+- usuario_id: FK para o usuário
+- evento_id: FK para o evento
+- status_presenca: Presença confirmada ou não
+- codigo_checkin: Código utilizado para realizar o check-in no evento
+
+**Event**
+
+Representa os eventos cadastrados na plataforma.
+
+Atributos:
+- id: Identificador do evento
+- nome: Nome do evento
+- descricao: Breve descrição do evento
+- data: Data de realização
+- local: Local onde ocorrerá
+- duracao_horas: Duração do evento
+- entidade_id: FK para a entidade organizadora
 
 ### 3.2. Arquitetura (Semana 5)
 
