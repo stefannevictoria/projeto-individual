@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>certifica</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="css/eventStyle.css" />
+</head>
+<body>
+    <header>
+    <div id="logo">
+      <img src="/images/certifica_logo.png" alt="CERTIFICA LOGO" />
+    </div>
+
+    <nav>
+      <ul id="anchors" class="nav-links">
+        <li><a href="perfil.ejs">Perfil</a></li>
+      </ul>
+      <div id="hamburger">
+        <div class="bar"></div>
+      </div>
+    </nav>
+    </header>
+
+    <div class="title-and-button">
+        <h1>Eventos:</h1>
+        <a href="/eventos/novo" class="btn-create">Criar Novo Evento</a>
+    </div>
+
+
+    <main>
+        <% if (eventos.length === 0) { %>
+            <p>Nenhum evento encontrado.</p>
+        <% } else { %>
+            <ul class="event-list">
+                <% eventos.forEach(evento => { %>
+                    <li class="event-item">
+                        <h2><%= evento.nome %></h2>
+                        <p><strong>Descrição:</strong> <%= evento.descricao %></p>
+                        <p><strong>Data:</strong> <%= new Date(evento.data).toLocaleString('pt-BR') %></p>
+                        <p><strong>Local:</strong> <%= evento.local %></p>
+                        <p><strong>Duração:</strong> <%= evento.duracao_horas %> horas</p>
+                        <p><strong>Entidade:</strong> <%= evento.entidade_nome || 'Não informada' %></p>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </main>
+
+    <footer>© 2025 certifica - Todos os direitos reservados.</footer>
+</body>
+</html>

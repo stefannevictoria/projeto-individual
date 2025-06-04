@@ -4,7 +4,7 @@ module.exports = {
   async index(req, res) {
     try {
       const events = await eventService.findAll();
-      res.status(200).json(events);
+      res.render('event', { eventos: events });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
