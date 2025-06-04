@@ -3,9 +3,22 @@ const eventModel = require('../models/eventModel');
 
 class EventRepository {
     async findAll() {
-        const result = await db.query('SELECT id, nome, descricao, data, local, duracao_horas, entidade_id FROM evento');
-        return result.rows.map(row => new eventModel(row));
+        const result = await db.query(`
+            SELECT 
+                evento.id, evento.nome, evento.descricao, evento.data,
+                evento.local, evento.duracao_horas, evento.entidade_id,
+                entidade.nome AS entidade_nome
+            FROM evento
+            LEFT JOIN entidade ON evento.entidade_id = entidade.id
+        `);
+
+        return result.rows.map(row => {
+            const evento = new eventModel(row);
+            evento.entidade_nome = row.entidade_nome;
+            return evento;
+        });
     }
+
 
     async findById(id) {
         const result = await db.query('SELECT id, nome, descricao, data, local, duracao_horas, entidade_id FROM evento WHERE id = $1', [id]);
