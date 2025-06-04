@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>certifica</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/registerStyle.css" />
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <img src="/images/certifica_logo.png" alt="CERTIFICA LOGO" />
+    </div>
+  </header>
+
+  <main>
+    <div class="cadastro-container">
+      <h1>Cadastro de Usuário</h1>
+      <form action="/usuarios/cadastro" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required><br>
+
+        <label for="entidade_id">Entidade/Liga:</label>
+        <select name="entidade_id" required>
+        <% entidades.forEach(entidade => { %>
+            <option value="<%= entidade.id %>"><%= entidade.nome %></option>
+        <% }) %>
+        </select><br>
+
+        <label for="papel">Papel:</label>
+        <input type="text" name="papel" required><br>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>© 2025 certifica - Todos os direitos reservados.</footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
