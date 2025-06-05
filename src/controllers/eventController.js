@@ -1,4 +1,5 @@
 const eventService = require('../services/eventService');
+const entityService = require('../services/entityService');
 
 module.exports = {
   async index(req, res) {
@@ -48,6 +49,15 @@ module.exports = {
       res.status(204).send();
     } catch (error) {
       res.status(400).json({ error: error.message });
+    }
+  },
+
+  async newForm(req, res) {
+    try {
+      const entidades = await entityService.findAll();
+      res.render('newEvent', { entidades });
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao carregar formulário de novo evento' });
     }
   }
 };

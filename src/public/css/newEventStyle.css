@@ -1,0 +1,227 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, #30b0bd, #084062);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: #084062;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px black;
+  position: relative;
+  z-index: 1000;
+}
+
+#logo img {
+  width: 100px;
+  animation: logoMove 5s ease-in-out infinite;
+}
+
+.criar-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 400px;
+}
+
+.criar-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+input[type="number"],
+select,
+textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  color: #333;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #702c69;
+  color: #f5f5f5;
+  border: 2px solid #4e1b49;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+  background-color: #4e1b49;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #084062;
+  color: #aaa;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px; 
+}
+
+@media (max-width: 540px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #24153f;
+    border-radius: 8px;
+    flex-direction: column;
+    width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  #hamburger {
+    display: flex;
+  }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+.nav-links li a {
+  color: #f5f5f5;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 1rem;
+}
+
+.nav-links li a:hover {
+  color: #702c69;
+}
+
+#hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+#hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 15px; /* espaço maior entre botões */
+  margin-top: 20px;
+}
+
+button[type="submit"] {
+  flex: 1 1 150px; /* permite crescer, base 150px */
+  max-width: 200px; /* largura máxima */
+}
+
+.cancelar-btn {
+  flex: 0 0 120px; /* largura fixa menor que o criar */
+  background-color: #ddd;
+  color: #333;
+  padding: 15px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 13px;
+  border: 2px solid #aaa;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 48px; /* altura igual ao botão criar */
+}
+
+.cancelar-btn:hover {
+  background-color: #bbb;
+  transform: scale(1.05);
+}
+
+button[type="submit"] {
+  background-color: #702c69;
+  color: #f5f5f5;
+  border: 2px solid #4e1b49;
+  padding: 15px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 48px;
+}
+
+button[type="submit"]:hover {
+  background-color: #4e1b49;
+  transform: scale(1.05);
+}

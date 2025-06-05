@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>certifica</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/newEventStyle.css" />
+</head>
+<body>
+    <header>
+    <div id="logo">
+      <img src="/images/certifica_logo.png" alt="CERTIFICA LOGO" />
+    </div>
+
+    <nav>
+      <ul id="anchors" class="nav-links">
+        <li><a href="perfil.ejs">Perfil</a></li>
+      </ul>
+      <div id="hamburger">
+        <div class="bar"></div>
+      </div>
+    </nav>
+    </header>
+
+    <main>
+        <div class="criar-container">
+            <h1>Novo Evento</h1>
+            <form action="/eventos" method="POST">
+                <label for="nome">Título:</label>
+                <input type="text" id="nome" name="nome" required><br>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="5" required></textarea><br>
+
+                <label for="data">Data:</label>
+                <input type="datetime-local" id="data" name="data" required><br>
+
+                <label for="local">Local:</label>
+                <input type="text" id="local" name="local" required><br>
+
+                <label for="duracao_horas">Duração (em horas):</label>
+                <input type="number" id="duracao_horas" name="duracao_horas" min="1" required><br>
+
+                <label for="entidade_id">Entidade:</label>
+                <select id="entidade_id" name="entidade_id" required>
+                    <% entidades.forEach(entidade => { %>
+                        <option value="<%= entidade.id %>"><%= entidade.nome %></option>
+                    <% }) %>
+                </select><br>
+
+                <div class="form-buttons">
+                    <button type="submit">Criar</button>
+                    <a href="/eventos" class="cancelar-btn">Cancelar</a>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+    <footer>© 2025 certifica - Todos os direitos reservados.</footer>
+</body>
+</html>
