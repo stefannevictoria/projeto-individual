@@ -80,6 +80,7 @@ O arquivo com o Modelo Físico do Banco de Dados pode ser acessado em: <a href="
 
 
 ### 3.1.1 BD e Models 
+
 Esta seção (3.1.1) descreve os Models implementados no sistema web. 
 
 **User**
@@ -115,6 +116,26 @@ Atributos:
 - local: Local onde ocorrerá
 - duracao_horas: Duração do evento
 - entidade_id: FK para a entidade organizadora
+
+**Entity**
+
+Define as entidades responsáveis pela organização dos eventos, como universidades, empresas ou centros acadêmicos.
+
+Atributos:
+- id: Identificador da entidade
+- nome: Nome da entidade
+- tipo: Tipo (ex: "Universidade", "Empresa", etc.)
+
+**Certificate**
+
+Armazena as informações dos certificados emitidos para os participantes dos eventos.
+
+Atributos:
+- id: Identificador do certificado
+- usuario_id: FK para o usuário
+- evento_id: FK para o evento
+- link_pdf: Link para o PDF do certificado
+- data_emissao: Data de emissão do certificado
 
 ### 3.2. Arquitetura (Semana 5)
 
@@ -198,7 +219,7 @@ Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por
 }
 ```
 
-### 3.7 Interface e Navegação (Semana 07)
+### 3.7 Interface e Navegação 
 
 *Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
 
@@ -222,5 +243,3 @@ Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por
 
 _Incluir as principais referências de seu projeto, para que o leitor possa consultar caso ele se interessar em aprofundar._<br>
 
----
----
