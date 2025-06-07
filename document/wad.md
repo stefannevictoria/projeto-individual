@@ -221,7 +221,63 @@ Abaixo estão detalhados todos os endpoints disponíveis na API, organizados por
 
 ### 3.7 Interface e Navegação 
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+Esta seção (3.7) apresentará o frontend do sistema web. 
+
+Nessa entrega, foi desenvolvido o frontend e a integração com o backend de algumas das telas do projeto Certifica, como: página inicial, de cadastro, de eventos e de novo evento. Abaixo é possível visualizar imagens de cada uma das telas citadas. 
+
+Na página inicial, que apresenta a logo principal do Certifica, há 3 botões: "Sobre nós", "Entrar" e "Cadastrar".
+
+<div align="center">
+  <sub> Figura 2: Menu incial </sub>
+
+![Página Inicial](https://res.cloudinary.com/dwewomj84/image/upload/v1749211000/Captura_de_tela_2025-06-06_085600_prxnc6.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+Ao apertar "Sobre nós", há direcionamento para a tela abaixo, que explica um pouco sobre o projeto Certifica. 
+
+<div align="center">
+  <sub> Figura 3: Tela de Sobre Nós </sub>
+
+![Sobre nós](https://res.cloudinary.com/dwewomj84/image/upload/v1749221951/Captura_de_tela_2025-06-06_115849_ccptk9.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+O botão "Cadastrar" redigeciona para a tela de cadastro de usuários. Além disso, nessa etapa, é possível se agregar a uma entidade (liga estudantil, clube, empresa, entre outros) caso seja parte de alguma.
+
+<div align="center">
+  <sub> Figura 4: Tela de Cadastro 1 </sub>
+
+![Cadastro](https://res.cloudinary.com/dwewomj84/image/upload/v1749325346/Captura_de_tela_2025-06-07_164213_mkzbep.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+<div align="center">
+  <sub> Figura 5: Tela de Cadastro 2 </sub>
+
+![Cadastro](https://res.cloudinary.com/dwewomj84/image/upload/v1749325376/Captura_de_tela_2025-06-07_164240_bmbzeo.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+O botão 'Entrar" redireciona para a tela principal do site, onde é possível visualizar os eventos criados e suas informações, e, futuramente, será possível se inscrever neles.
+
+<div align="center">
+  <sub> Figura 6: Tela de Eventos </sub>
+
+![Eventos](https://res.cloudinary.com/dwewomj84/image/upload/v1749325628/Captura_de_tela_2025-06-07_164653_d861ug.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+Na tela de Eventos, há o botão "Criar Novo Evento" que redireciona para a tela de criar um novo evento. 
+
+<div align="center">
+  <sub> Figura 7: Tela de criar novos eventos </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1749325865/Captura_de_tela_2025-06-07_165053_na2cdv.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+No momento, qualquer usuário pode criar um novo evento. Entretanto, quando o sistema de login estiver implementado, apenas os usuários agregados à uma entidade poderão criar eventos.
 
 ---
 
