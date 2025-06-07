@@ -2,6 +2,10 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background: linear-gradient(to bottom, #30b0bd, #084062);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 * {
@@ -11,7 +15,6 @@ html, body {
 }
 
 body {
-  background: linear-gradient(to bottom, #30b0bd, #084062);
   font-family: 'Poppins', sans-serif;
   color: #f5f5f5;
   display: flex;
@@ -92,9 +95,9 @@ p {
 }
 
 button {
-  background-color: #702c69;
-  color: #f5f5f5;
-  border: 2px solid #4e1b49;
+  background-color: #702C69;
+  color: #F5F5F5;
+  border: 2px solid #4E1B49;
   padding: 15px 30px;
   font-size: 1rem;
   font-weight: bold;

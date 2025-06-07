@@ -19,4 +19,6 @@ router.use("/inscricoes", registrationRoutes);
 const certificateRoutes = require("./certificateRoutes");
 router.use("/certificados", certificateRoutes);
 
+router.use('/sobre-nos', landingPageRoutes);
+
 module.exports = router;
