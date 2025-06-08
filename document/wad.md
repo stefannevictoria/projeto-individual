@@ -137,16 +137,22 @@ Atributos:
 - link_pdf: Link para o PDF do certificado
 - data_emissao: Data de emissão do certificado
 
-### 3.2. Arquitetura (Semana 5)
+### 3.2. Arquitetura
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+Esta seção (3.2) apresentará o diagrama de arquitetura da sua solução da aplicação web.
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+A aplicação web foi desenvolvida seguindo a arquitetura MVC (Model-View-Controller), comko representado no diagrama abaixo.
+
+<div align="center">
+  <sub> Figura 2: Diagrama de Arquitetura MVC </sub>
+
+![Diagrama](https://res.cloudinary.com/dwewomj84/image/upload/v1749422867/Editor___Mermaid_Chart-2025-06-08-224347_jvdncb.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+A View é composta pelas páginas da aplicação acessadas pelo cliente via navegador. Através de rotas específicas (`/usuarios`, `/eventos`, `/entidades`), o cliente interage com a aplicação, enviando requisições HTTP. Essas requisições são recebidas pela camada Controller, responsável por tratar os dados recebidos, aplicar as regras de negócio e acionar a camada Model.
+
+A Model representa as entidades centrais do sistema (usuário, evento, entidade), sendo responsável tanto pela lógica de negócio quanto pela comunicação com o banco de dados (PostgreSQL). O fluxo de dados ocorre da View → Controller → Model e retorna da Model → Controller → View com as respostas que atualizam a interface ou confirmam ações executadas.
 
 ### 3.3. Wireframes (Semana 03 - opcional)
 
