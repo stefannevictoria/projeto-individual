@@ -44,6 +44,17 @@ class UserService {
       throw new Error('Erro ao deletar usuário');
     }
   }
+
+  async findByEmail(email) {
+    try {
+      const user = await userRepository.findByEmail(email);
+      if (!user) throw new Error('Usuário não encontrado');
+      return user;
+    } catch (error) {
+      throw new Error('Erro ao buscar usuário por email');
+    }
+  }
+
 }
 
 module.exports = new UserService();

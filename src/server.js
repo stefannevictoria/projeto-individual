@@ -9,6 +9,8 @@ db.connect()
 
 const bodyParser = require('body-parser');
 const indexRoutes = require('./routes/index');
+const userController = require('./controllers/userController')
+const session = require('express-session');
 
 const app = express();
 
@@ -17,7 +19,16 @@ app.use(express.json());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'sua_chave_secreta_segura',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.get('/login', (req, res) => res.render('login'));
+app.post('/login', (req, res) => userController.login(req, res));
 
 app.use('/', indexRoutes);
 

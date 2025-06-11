@@ -2,6 +2,14 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
+function verificarAutenticacao(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
+
 router.get('/', userController.index);
 router.get('/:id', userController.find);
 router.post('/', userController.create);
@@ -40,5 +48,31 @@ router.post('/cadastro', async (req, res) => {
     res.status(500).send("Erro ao cadastrar usuário.");
   }
 });
+
+router.get('/login', (req, res) => res.render('login'));
+router.post('/login', (req, res) => userController.login(req, res));
+
+router.get('/perfil', verificarAutenticacao, (req, res) => {
+  res.render('perfil', { usuario: req.session.user });
+});
+
+router.post('/perfil', verificarAutenticacao, async (req, res) => {
+  const userService = require('../services/userService');
+  const { nome, email } = req.body;
+  const id = req.session.user.id;
+
+  const atualizado = await userService.update(id, { nome, email, senha_hash: req.session.user.senha_hash });
+  req.session.user = { ...req.session.user, nome: atualizado.nome, email: atualizado.email }; // atualiza a sessão
+
+  res.redirect('/perfil');
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) return res.status(500).send('Erro ao sair');
+    res.redirect('/login');
+  });
+});
+
 
 module.exports = router;

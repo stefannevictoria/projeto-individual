@@ -40,6 +40,14 @@ class UserRepository {
         await db.query('DELETE FROM usuario WHERE id = $1', [id]);
     }
 
+    async findByEmail(email) {
+        const result = await db.query(
+            'SELECT id, nome, email, senha_hash FROM usuario WHERE email = $1',
+            [email]
+        );
+        return result.rows.length ? new userModel(result.rows[0]) : null;
+    }
+
 }
 
 module.exports = new UserRepository();

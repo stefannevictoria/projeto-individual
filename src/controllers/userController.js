@@ -1,4 +1,5 @@
 const userService = require('../services/userService');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   async index(req, res) {
@@ -49,5 +50,27 @@ module.exports = {
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
+  },
+
+  async login(req, res) {
+    try {
+      const { email, senha } = req.body;
+      const usuario = await userService.findByEmail(email);
+
+      if (usuario && await bcrypt.compare(senha, usuario.senha_hash)) {
+        req.session.user = {
+          id: usuario.id,
+          nome: usuario.nome,
+          email: usuario.email
+        };
+        console.log('Usuário logado com sucesso:', req.session.user);
+        res.redirect('/eventos');
+      } else {
+        res.status(401).send('Email ou senha inválidos!');
+      }
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
+
 };
