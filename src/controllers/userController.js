@@ -23,11 +23,24 @@ module.exports = {
 
   async create(req, res) {
     try {
-      const userData = req.body;
-      const newUser = await userService.create(userData);
-      res.status(201).json(newUser);
+      const { nome, email, senha } = req.body;
+
+      if (!nome || !email || !senha) {
+        return res.status(400).render('register', {
+          erro: 'Nome, email e senha são obrigatórios.'
+        });
+      }
+
+      const senha_hash = await bcrypt.hash(senha, 10);
+      const newUser = await userService.create({ nome, email, senha_hash });
+
+      res.redirect('/login');
+
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      console.error("Erro no cadastro:", error.message);
+      res.status(500).render('register', {
+        erro: 'Erro ao cadastrar usuário.'
+      });
     }
   },
 

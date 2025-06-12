@@ -30,16 +30,6 @@
         <label for="senha">Senha:</label>
         <input type="password" name="senha" required><br>
 
-        <label for="entidade_id">Entidade:</label>
-        <select name="entidade_id" required>
-        <% entidades.forEach(entidade => { %>
-            <option value="<%= entidade.id %>"><%= entidade.nome %></option>
-        <% }) %>
-        </select><br>
-
-        <label for="papel">Papel:</label>
-        <input type="text" name="papel" required><br>
-
         <button type="submit">Cadastrar</button>
       </form>
     </div>
