@@ -33,7 +33,8 @@ class UserService {
       if (!updatedUser) throw new Error('Usuário não encontrado para atualização');
       return updatedUser;
     } catch (error) {
-      throw new Error('Erro ao atualizar usuário');
+      console.error("Erro real no userService.update:", error); // 👈 LOGA o erro
+      throw error;
     }
   }
 

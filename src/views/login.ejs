@@ -20,6 +20,11 @@
   <main>
     <div class="login-container">
       <h1>Login</h1>
+
+      <% if (typeof erro !== 'undefined' && erro) { %>
+        <p style="color: red; font-weight: bold;"><%= erro %></p>
+      <% } %>
+
       <form action="/login" method="POST" onsubmit="salvarId()">
         Email: <input type="email" name="email" required><br>
         Senha: <input type="password" name="senha" required><br>

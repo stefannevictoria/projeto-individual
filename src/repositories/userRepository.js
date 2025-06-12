@@ -27,14 +27,36 @@ class UserRepository {
     }
 
     async update(id, user) {
-        const result = await db.query(
-            `UPDATE usuario
-            SET nome = $1, email = $2, senha_hash = $3
-            WHERE id = $4 RETURNING *`,
-            [user.nome, user.email, user.senha_hash, id]
-        );
+        const campos = [];
+        const valores = [];
+        let i = 1;
+
+        if (user.nome) {
+            campos.push(`nome = $${i++}`);
+            valores.push(user.nome);
+        }
+
+        if (user.email) {
+            campos.push(`email = $${i++}`);
+            valores.push(user.email);
+        }
+
+        if (user.senha_hash) {
+            campos.push(`senha_hash = $${i++}`);
+            valores.push(user.senha_hash);
+        }
+
+        if (campos.length === 0) {
+            throw new Error('Nenhum dado para atualizar');
+        }
+
+        const query = `UPDATE usuario SET ${campos.join(', ')} WHERE id = $${i} RETURNING *`;
+        valores.push(id);
+
+        const result = await db.query(query, valores);
         return result.rows.length ? new userModel(result.rows[0]) : null;
     }
+
 
     async delete(id) {
         await db.query('DELETE FROM usuario WHERE id = $1', [id]);

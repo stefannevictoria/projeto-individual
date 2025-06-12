@@ -33,14 +33,33 @@ module.exports = {
 
   async update(req, res) {
     try {
-      const { id } = req.params;
-      const userData = req.body;
-      const updatedUser = await userService.update(id, userData);
-      res.status(200).json(updatedUser);
+      const { id } = req.session.user;
+      const { nome, email, senha } = req.body;
+
+      const updateData = { nome, email };
+
+      if (senha && senha.trim() !== "") {
+        const senha_hash = await bcrypt.hash(senha, 10);
+        updateData.senha_hash = senha_hash;
+      }
+
+      const updatedUser = await userService.update(id, updateData);
+
+      req.session.user = {
+        id: updatedUser.id,
+        nome: updatedUser.nome,
+        email: updatedUser.email,
+        senha_hash: updateData.senha_hash || req.session.user.senha_hash
+      };
+
+      res.redirect('/usuarios/perfil');
+
     } catch (error) {
+      console.error("Erro ao atualizar usuário:", error);
       res.status(400).json({ error: error.message });
     }
   },
+
 
   async delete(req, res) {
     try {
@@ -57,20 +76,34 @@ module.exports = {
       const { email, senha } = req.body;
       const usuario = await userService.findByEmail(email);
 
-      if (usuario && await bcrypt.compare(senha, usuario.senha_hash)) {
-        req.session.user = {
-          id: usuario.id,
-          nome: usuario.nome,
-          email: usuario.email
-        };
-        console.log('Usuário logado com sucesso:', req.session.user);
-        res.redirect('/eventos');
-      } else {
-        res.status(401).send('Email ou senha inválidos!');
+      const senhaCorreta = usuario && await bcrypt.compare(senha, usuario.senha_hash);
+
+      if (!usuario || !senhaCorreta) {
+        return res.status(401).render('login', { erro: 'Email ou senha incorretos' });
       }
+
+      req.session.user = {
+        id: usuario.id,
+        nome: usuario.nome,
+        email: usuario.email
+      };
+
+      res.redirect('/eventos');
+
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error('Erro no login:', error.message);
+      return res.status(500).render('login', { erro: 'Erro interno no servidor' });
     }
-  }
+  },
+
+  async profile(req, res) {
+    try {
+      const { id } = req.session.user;
+      const usuario = await userService.findById(id);
+      res.render('perfil', { usuario });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  },
 
 };
