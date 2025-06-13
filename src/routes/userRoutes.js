@@ -46,7 +46,7 @@ router.post('/cadastro', async (req, res) => {
     });
 
     console.log("Relação entidade-usuário criada com sucesso");
-    res.redirect('/eventos');
+    res.redirect('/login');
   } catch (error) {
     console.error("Erro detalhado:", error);
     res.status(500).send("Erro ao cadastrar usuário.");
@@ -62,9 +62,26 @@ router.post('/login', (req, res) => userController.login(req, res));
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) return res.status(500).send('Erro ao sair');
-    res.redirect('/login');
+    res.redirect('/');
   });
 });
 
+router.put('/api/usuarios/perfil', verificarAutenticacao, async (req, res) => {
+  try {
+    const userService = require('../services/userService');
+    const { nome, email } = req.body;
+    
+    await userService.updateUser(req.session.user.id, { nome, email });
+    
+    // Update session
+    req.session.user.nome = nome;
+    req.session.user.email = email;
+    
+    res.json({ message: 'Perfil atualizado com sucesso' });
+  } catch (error) {
+    console.error('Erro ao atualizar perfil:', error);
+    res.status(500).json({ message: 'Erro ao atualizar perfil' });
+  }
+});
 
 module.exports = router;

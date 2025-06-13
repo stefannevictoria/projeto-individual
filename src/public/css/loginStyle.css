@@ -209,3 +209,26 @@ main {
   align-items: center;
   padding: 40px 20px; /* espaço para o login não colar no footer */
 }
+
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-link p {
+  font-size: 0.9rem;
+  color: #f5f5f5;
+}
+
+.auth-link a {
+  color: #30b0bd;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #4dd0e1;
+  text-decoration: underline;
+}
+

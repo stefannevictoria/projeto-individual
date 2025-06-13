@@ -33,4 +33,8 @@ router.use("/certificados", certificateRoutes);
 
 router.use('/sobre-nos', landingPageRoutes);
 
+router.get('/dashboard', verificarAutenticacao, (req, res) => {
+  res.render('dashboard', { user: req.session.user });
+});
+
 module.exports = router;
