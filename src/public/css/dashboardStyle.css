@@ -3,6 +3,10 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background: linear-gradient(to bottom, #30b0bd, #084062);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 * {
@@ -12,7 +16,6 @@ html, body {
 }
 
 body {
-  background: linear-gradient(to bottom, #30b0bd, #084062);
   font-family: 'Poppins', sans-serif;
   color: #f5f5f5;
   display: flex;
