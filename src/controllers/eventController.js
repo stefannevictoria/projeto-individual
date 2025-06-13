@@ -4,7 +4,7 @@ const entityService = require('../services/entityService');
 module.exports = {
   async index(req, res) {
     try {
-      const eventos = await eventService.getAllEvents();
+      const eventos = await eventService.findAll();
       res.render('event', {
         eventos,
         user: req.session.user

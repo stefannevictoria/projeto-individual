@@ -13,7 +13,7 @@ function verificarAutenticacao(req, res, next) {
 router.get('/api/eventos', verificarAutenticacao, async (req, res) => {
   try {
     const eventService = require('../services/eventService');
-    const events = await eventService.getAllEvents();
+    const events = await eventService.findAll();
     res.json(events);
   } catch (error) {
     console.error('Erro ao buscar eventos:', error);

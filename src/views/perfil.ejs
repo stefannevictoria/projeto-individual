@@ -11,20 +11,25 @@
 </head>
 <body>
     <header>
-    <div id="logo">
-      <img src="/images/certifica_logo.png" alt="CERTIFICA LOGO" />
-    </div>
-
-    <nav>
-      <ul id="anchors" class="nav-links">
-        <li><a href="/usuarios/perfil">Perfil</a></li>
-      </ul>
-      <div id="hamburger">
-        <div class="bar"></div>
+      <div id="logo">
+        <img src="/images/certificaa.png" alt="CERTIFICA LOGO" />
       </div>
-    </nav>
     </header>
+
     <main>
+      <div class="main-container">
+        <aside class="sidebar">
+          <nav>
+            <ul>
+              <li><a href="/eventos" class="nav-link" data-section="todos-eventos">Todos os Eventos</a></li>
+              <li><a href="#" class="nav-link" data-section="inscritos">Inscritos</a></li>
+              <li><a href="#" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
+              <li><a href="/usuarios/perfil" class="nav-link active" data-section="perfil">Perfil</a></li>
+              <li><a href="/logout" class="nav-link logout">Logout</a></li>
+            </ul>
+          </nav>
+        </aside>
+        
     <div class="perfil-container">
       <h1>Perfil do Usuário</h1>
       <form action="/usuarios/perfil" method="POST">
@@ -39,8 +44,24 @@
 
         <button type="submit">Salvar alterações</button>
       </form>
+
+      <div class="entities-section">
+            <h3>Vincular-se a Entidades</h3>
+            <div class="entity-form">
+              <select id="entity-select">
+                <option value="">Selecione uma entidade</option>
+              </select>
+              <input type="text" id="cargo" placeholder="Cargo na entidade" required>
+              <button id="link-entity-btn">Vincular</button>
+            </div>
+            
+            <h3>Entidades Vinculadas</h3>
+            <div id="linked-entities">
+              
+            </div>
+      </div>
     </div>
-  </main>
+    </main>
 
   <footer>© 2025 certifica - Todos os direitos reservados.</footer>
 </body>

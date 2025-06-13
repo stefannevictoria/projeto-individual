@@ -36,6 +36,8 @@ header {
 
 #logo img {
   width: 100px;
+  height: auto;
+  animation: logoMove 5s ease-in-out infinite;
 }
 
 .user-info {
