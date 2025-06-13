@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            if (this.getAttribute('href') === '/logout' || this.getAttribute('href') === '/dashboard') {
+            if (this.getAttribute('href') === '/logout' || this.getAttribute('href') === '/eventos') {
                 return; // Allow normal navigation for logout and dashboard
             }
             

@@ -391,3 +391,35 @@ footer {
   }
 }
 
+.event-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.event-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  backdrop-filter: blur(4px);
+}
+
+.event-item h2 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.event-item p {
+  color: #e0e0e0;
+  margin-bottom: 6px;
+}
+

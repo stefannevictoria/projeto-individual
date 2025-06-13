@@ -101,7 +101,7 @@ module.exports = {
         email: usuario.email
       };
 
-      res.redirect('/dashboard');
+      res.redirect('/eventos');
 
     } catch (error) {
       console.error('Erro no login:', error.message);

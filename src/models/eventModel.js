@@ -8,6 +8,6 @@ class Event {
         this.duracao_horas = duracao_horas;
         this.entidade_id = entidade_id;
     }
-  }
+}
 
 module.exports = Event;

@@ -4,10 +4,14 @@ const entityService = require('../services/entityService');
 module.exports = {
   async index(req, res) {
     try {
-      const events = await eventService.findAll();
-      res.render('event', { eventos: events });
+      const eventos = await eventService.getAllEvents();
+      res.render('event', {
+        eventos,
+        user: req.session.user
+      });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      console.error("Erro ao carregar eventos:", error);
+      res.status(500).send("Erro ao carregar eventos");
     }
   },
 

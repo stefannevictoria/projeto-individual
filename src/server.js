@@ -30,6 +30,12 @@ app.use(session({
 app.get('/login', (req, res) => res.render('login'));
 app.post('/login', (req, res) => userController.login(req, res));
 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
+
+
 app.use('/', indexRoutes);
 
 const PORT = process.env.PORT || 3000;

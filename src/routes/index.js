@@ -21,10 +21,6 @@ router.use("/entidades", entityRoutes);
 const eventRoutes = require("./eventRoutes");
 router.use("/eventos", eventRoutes);
 
-router.get('/eventos', verificarAutenticacao, (req, res) => {
-  res.render('eventos', { usuario: req.session.user });
-});
-
 const registrationRoutes = require("./registrationRoutes");
 router.use("/inscricoes", registrationRoutes);
 
