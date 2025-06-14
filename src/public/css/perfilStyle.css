@@ -88,7 +88,7 @@ header {
   border-radius: 20px;
   padding: 40px;
   max-width: 500px;
-  margin: 40px auto 40px 40px;
+  margin: 40px auto;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   text-align: left;
@@ -207,7 +207,7 @@ footer {
 }
 
 .entities-section {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .entities-section h3 {
