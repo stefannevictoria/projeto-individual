@@ -32,18 +32,12 @@ router.post('/cadastro', async (req, res) => {
   const entityUserService = require('../services/entityUserService');
 
   try {
-    const { nome, email, senha, entidade_id, papel } = req.body;
+    const { nome, email, senha } = req.body;
     const senha_hash = await bcrypt.hash(senha, 10);
 
     console.log("Tentando criar usuário:", nome, email);
     const newUser = await userService.create({ nome, email, senha_hash });
     console.log("Usuário criado:", newUser);
-
-    await entityUserService.create({
-      usuario_id: newUser.id,
-      entidade_id,
-      papel
-    });
 
     console.log("Relação entidade-usuário criada com sucesso");
     res.redirect('/login');

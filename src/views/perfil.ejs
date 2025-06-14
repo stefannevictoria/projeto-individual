@@ -51,8 +51,8 @@
               <select id="entity-select">
                 <option value="">Selecione uma entidade</option>
               </select>
-              <input type="text" id="cargo" placeholder="Cargo na entidade" required>
-              <button id="link-entity-btn">Vincular</button>
+              <input type="text" id="papel" placeholder="Cargo na entidade" required>
+              <button id="link-entity-btn" type="submit">Vincular</button>
             </div>
             
             <h3>Entidades Vinculadas</h3>
@@ -62,6 +62,94 @@
       </div>
     </div>
     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const entitySelect = document.getElementById("entity-select");
+        const papelInput = document.getElementById("papel");
+        const linkEntityBtn = document.getElementById("link-entity-btn");
+        const linkedEntitiesDiv = document.getElementById("linked-entities");
+
+        // Carrega entidades para o select
+        async function carregarEntidades() {
+          try {
+            const res = await fetch('/entidades/api/entidades');
+            const entidades = await res.json();
+            entidades.forEach(ent => {
+              const option = document.createElement("option");
+              option.value = ent.id;
+              option.textContent = ent.nome;
+              entitySelect.appendChild(option);
+            });
+          } catch (error) {
+            console.error("Erro ao carregar entidades:", error);
+          }
+        }
+
+        // Carrega entidades já vinculadas
+        async function carregarEntidadesVinculadas() {
+          linkedEntitiesDiv.innerHTML = "";
+          try {
+            const res = await fetch('/entidades/api/entidades/vinculadas');
+            const vinculadas = await res.json();
+            vinculadas.forEach(ent => {
+              const div = document.createElement("div");
+              div.classList.add("linked-entity");
+              div.innerHTML = `
+                <span>${ent.nome} - ${ent.papel}</span>
+                <button class="desvincular-btn" data-id="${ent.entidade_id}">X</button>
+              `;
+              linkedEntitiesDiv.appendChild(div);
+            });
+
+            // Eventos de clique nos botões de desvincular
+            document.querySelectorAll(".desvincular-btn").forEach(btn => {
+              btn.addEventListener("click", async () => {
+                const id = btn.getAttribute("data-id");
+                try {
+                  await fetch(`/entidades/api/entidades/desvincular/${id}`, {
+                    method: "DELETE"
+                  });
+                  carregarEntidadesVinculadas();
+                } catch (error) {
+                  console.error("Erro ao desvincular:", error);
+                }
+              });
+            });
+
+          } catch (error) {
+            console.error("Erro ao carregar vinculadas:", error);
+          }
+        }
+
+        // Vincular entidade
+        linkEntityBtn.addEventListener("click", async () => {
+          const entidade_id = entitySelect.value;
+          const papel = papelInput.value;
+
+          if (!entidade_id || !papel) {
+            alert("Selecione uma entidade e insira o cargo.");
+            return;
+          }
+
+          try {
+            await fetch("/entidades/api/entidades/vincular", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ entidade_id, papel })
+            });
+            papelInput.value = "";
+            entitySelect.value = "";
+            carregarEntidadesVinculadas();
+          } catch (error) {
+            console.error("Erro ao vincular:", error);
+          }
+        });
+
+        carregarEntidades();
+        carregarEntidadesVinculadas();
+      });
+    </script>
 
   <footer>© 2025 certifica - Todos os direitos reservados.</footer>
 </body>

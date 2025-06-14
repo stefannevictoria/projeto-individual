@@ -44,13 +44,18 @@ class EntityUserService {
     }
   }
 
-  async delete(id) {
+  async deleteEntityUser(usuario_id, entidade_id) {
+    return await entityUserRepository.delete(usuario_id, entidade_id);
+  }
+
+  async findByUserId(usuario_id) {
     try {
-      await entityUserRepository.delete(id);
+      return await entityUserRepository.findByUserId(usuario_id);
     } catch (error) {
-      throw new Error("Erro ao deletar relação entidade-usuário");
+      throw new Error("Erro ao buscar entidades vinculadas ao usuário");
     }
   }
+
 }
 
 module.exports = new EntityUserService();

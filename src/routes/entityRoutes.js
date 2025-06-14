@@ -13,7 +13,7 @@ function verificarAutenticacao(req, res, next) {
 router.get('/api/entidades', verificarAutenticacao, async (req, res) => {
   try {
     const entityService = require('../services/entityService');
-    const entities = await entityService.getAllEntities();
+    const entities = await entityService.findAll();
     res.json(entities);
   } catch (error) {
     console.error('Erro ao buscar entidades:', error);
@@ -24,7 +24,7 @@ router.get('/api/entidades', verificarAutenticacao, async (req, res) => {
 router.get('/api/entidades/vinculadas', verificarAutenticacao, async (req, res) => {
   try {
     const entityUserService = require('../services/entityUserService');
-    const entities = await entityUserService.getUserEntities(req.session.user.id);
+    const entities = await entityUserService.findByUserId(req.session.user.id);
     res.json(entities);
   } catch (error) {
     console.error('Erro ao buscar entidades vinculadas:', error);
@@ -35,12 +35,12 @@ router.get('/api/entidades/vinculadas', verificarAutenticacao, async (req, res) 
 router.post('/api/entidades/vincular', verificarAutenticacao, async (req, res) => {
   try {
     const entityUserService = require('../services/entityUserService');
-    const { entidade_id, cargo } = req.body;
+    const { entidade_id, papel } = req.body;
     
-    await entityUserService.createEntityUser({
+    await entityUserService.create({
       usuario_id: req.session.user.id,
       entidade_id: entidade_id,
-      cargo: cargo
+      papel: papel
     });
     
     res.json({ message: 'Vinculação realizada com sucesso' });
@@ -56,7 +56,7 @@ router.delete('/api/entidades/desvincular/:id', verificarAutenticacao, async (re
     const entityId = req.params.id;
     const userId = req.session.user.id;
     
-    await entityUserService.deleteEntityUser(userId, entityId);
+    await entityUserService.delete(userId, entityId);
     
     res.json({ message: 'Desvinculação realizada com sucesso' });
   } catch (error) {

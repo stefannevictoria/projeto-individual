@@ -113,7 +113,9 @@ module.exports = {
     try {
       const { id } = req.session.user;
       const usuario = await userService.findById(id);
-      res.render('perfil', { usuario });
+      const entidades = await require('../services/entityService').findAll();
+
+      res.render('perfil', { usuario, entidades });
     } catch (error) {
       res.status(500).send(error.message);
     }

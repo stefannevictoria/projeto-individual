@@ -17,6 +17,17 @@ class EntityUserRepository {
     return result.rows.length ? new EntityUser(result.rows[0]) : null;
   }
 
+  async findByUserId(usuario_id) {
+    const result = await db.query(
+      `SELECT e.id as entidade_id, e.nome, eu.papel
+      FROM entidade_usuario eu
+      JOIN entidade e ON e.id = eu.entidade_id
+      WHERE eu.usuario_id = $1`,
+      [usuario_id]
+    );
+    return result.rows;
+  }
+
   async create(entityUser) {
     try {
       const result = await db.query(
@@ -41,9 +52,10 @@ class EntityUserRepository {
     return result.rows.length ? new EntityUser(result.rows[0]) : null;
   }
 
-  async delete(id) {
-    await db.query("DELETE FROM entidade_usuario WHERE id = $1", [id]);
+  async delete(usuario_id, entidade_id) {
+    await db.query("DELETE FROM entidade_usuario WHERE usuario_id = $1 AND entidade_id = $2", [usuario_id, entidade_id]);
   }
+
 }
 
 module.exports = new EntityUserRepository();
