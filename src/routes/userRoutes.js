@@ -67,7 +67,6 @@ router.put('/api/usuarios/perfil', verificarAutenticacao, async (req, res) => {
     
     await userService.updateUser(req.session.user.id, { nome, email });
     
-    // Update session
     req.session.user.nome = nome;
     req.session.user.email = email;
     

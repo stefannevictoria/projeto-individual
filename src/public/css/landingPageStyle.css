@@ -154,11 +154,11 @@ footer {
 }
 
 #logo-principal img {
-  width: 250px; /* ou qualquer valor desejado, como 150px, 300px, etc. */
-  height: auto; /* mantém a proporção */
+  width: 250px; 
+  height: auto; 
 }
 
 #logo img {
-  width: 100px; /* ou qualquer valor desejado, como 150px, 300px, etc. */
-  height: auto; /* mantém a proporção */
+  width: 100px; 
+  height: auto; 
 }

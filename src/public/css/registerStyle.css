@@ -112,7 +112,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px; /* espaço para o login não colar no footer */
+  padding: 40px 20px; 
 }
 .auth-link {
   text-align: center;

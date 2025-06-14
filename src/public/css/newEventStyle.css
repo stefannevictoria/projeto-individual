@@ -173,18 +173,18 @@ main {
 
 .form-buttons {
   display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  gap: 15px; /* espaço maior entre botões */
+  justify-content: center; 
+  gap: 15px; 
   margin-top: 20px;
 }
 
 button[type="submit"] {
-  flex: 1 1 150px; /* permite crescer, base 150px */
-  max-width: 200px; /* largura máxima */
+  flex: 1 1 150px; 
+  max-width: 200px; 
 }
 
 .cancelar-btn {
-  flex: 0 0 120px; /* largura fixa menor que o criar */
+  flex: 0 0 120px; 
   background-color: #ddd;
   color: #333;
   padding: 15px 0;
@@ -199,7 +199,7 @@ button[type="submit"] {
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.2s ease;
-  height: 48px; /* altura igual ao botão criar */
+  height: 48px; 
 }
 
 .cancelar-btn:hover {
