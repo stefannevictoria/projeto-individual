@@ -14,10 +14,12 @@ class RegistrationRepository {
 
     async create(registration) {
         try {
+            const statusPresenca = registration.status_presenca ?? false; 
+    
             const result = await db.query(
                 `INSERT INTO inscricao (usuario_id, evento_id, status_presenca, codigo_checkin)
                 VALUES ($1, $2, $3, $4) RETURNING *`,
-                [registration.usuario_id, registration.evento_id, registration.status_presenca, registration.codigo_checkin]
+                [registration.usuario_id, registration.evento_id, statusPresenca, registration.codigo_checkin]
             );
             return new registrationModel(result.rows[0]);
         } catch (error) {

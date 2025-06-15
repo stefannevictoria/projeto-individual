@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS inscricao (
   id SERIAL PRIMARY KEY,
   usuario_id INT NOT NULL REFERENCES usuario(id) ON DELETE CASCADE,
   evento_id INT NOT NULL REFERENCES evento(id) ON DELETE CASCADE,
-  status_presenca BOOLEAN NOT NULL DEFAULT FALSE,
+  status_presenca BOOLEAN DEFAULT FALSE,
   codigo_checkin VARCHAR(100)
 );
 
