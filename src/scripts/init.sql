@@ -41,6 +41,9 @@ CREATE TABLE IF NOT EXISTS inscricao (
   codigo_checkin VARCHAR(100)
 );
 
+ALTER TABLE inscricao
+ADD CONSTRAINT inscricao_unica UNIQUE (usuario_id, evento_id);
+
 -- Tabela de certificados
 CREATE TABLE IF NOT EXISTS certificado (
   id SERIAL PRIMARY KEY,

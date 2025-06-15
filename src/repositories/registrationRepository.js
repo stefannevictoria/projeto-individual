@@ -42,6 +42,14 @@ class RegistrationRepository {
         await db.query('DELETE FROM inscricao WHERE id = $1', [id]);
     }
 
+    async findByUserAndEvent(usuario_id, evento_id) {
+        const result = await db.query(
+        'SELECT * FROM inscricao WHERE usuario_id = $1 AND evento_id = $2',
+        [usuario_id, evento_id]
+        );
+        return result.rows.length ? new registrationModel(result.rows[0]) : null;
+    }
+
 }
 
 module.exports = new RegistrationRepository();

@@ -19,13 +19,23 @@ class RegistrationService {
     }
   }
 
-  async create(registrationData) {
-    try {
-      return await registrationRepository.create(registrationData);
-    } catch (error) {
-      throw new Error('Erro ao criar inscrição');
+    async create(registrationData) {
+      try {
+        const existing = await registrationRepository.findByUserAndEvent(
+          registrationData.usuario_id,
+          registrationData.evento_id
+        );
+
+        if (existing) {
+          throw new Error('Usuário já está inscrito neste evento');
+        }
+
+        return await registrationRepository.create(registrationData);
+      } catch (error) {
+        throw new Error('Erro ao criar inscrição: ' + error.message);
+      }
     }
-  }
+
 
   async update(id, registrationData) {
     try {
