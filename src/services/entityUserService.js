@@ -44,7 +44,7 @@ class EntityUserService {
     }
   }
 
-  async deleteEntityUser(usuario_id, entidade_id) {
+  async delete(usuario_id, entidade_id) {
     return await entityUserRepository.delete(usuario_id, entidade_id);
   }
 
