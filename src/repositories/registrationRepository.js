@@ -12,15 +12,16 @@ class RegistrationRepository {
         return result.rows.length ? new registrationModel(result.rows[0]) : null;
     }
 
-    async findByUserId(usuarioId) {
+    async findByUserId(usuario_id) {
         const result = await db.query(`
-            SELECT e.*
+            SELECT e.*, ent.nome AS entidade_nome
             FROM inscricao i
             JOIN evento e ON i.evento_id = e.id
+            LEFT JOIN entidade ent ON e.entidade_id = ent.id
             WHERE i.usuario_id = $1
-        `, [usuarioId]);
+        `, [usuario_id]);
 
-        return result.rows; 
+        return result.rows;
     }
 
     async create(registration) {

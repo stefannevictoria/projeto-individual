@@ -14,9 +14,6 @@
         <div id="logo">
             <img src="/images/certificaa.png" alt="CERTIFICA LOGO" />
         </div>
-        <div class="user-info">
-            <span>Bem-vindo, <%= user?.nome || "Usuário" %></span>
-        </div>
     </header>
 
     <div class="main-container">
@@ -34,7 +31,8 @@
 
     <main class="content">
         <div id="meus-eventos" class="section active">
-            <h1>Meus Eventos</h1>
+            <h1>Eventos Inscritos</h1>
+            <p>Aqui serão mostrados os eventos em que você se inscreveu.</p>
             <div class="events-grid" id="events-container">
             <% if (eventos.length === 0) { %>
                 <p>Você ainda não se inscreveu em nenhum evento.</p>
