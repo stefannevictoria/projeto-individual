@@ -12,6 +12,17 @@ class RegistrationRepository {
         return result.rows.length ? new registrationModel(result.rows[0]) : null;
     }
 
+    async findByUserId(usuarioId) {
+        const result = await db.query(`
+            SELECT e.*
+            FROM inscricao i
+            JOIN evento e ON i.evento_id = e.id
+            WHERE i.usuario_id = $1
+        `, [usuarioId]);
+
+        return result.rows; 
+    }
+
     async create(registration) {
         try {
             const statusPresenca = registration.status_presenca ?? false; 

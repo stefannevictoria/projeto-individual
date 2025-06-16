@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>certifica</title>
+    <title>Meus Eventos - Certifica</title>
     <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"/>
-    <link rel="stylesheet" href="css/dashboardStyle.css" />
+    <link rel="stylesheet" href="/css/dashboardStyle.css" />
 </head>
 <body>
     <header>
@@ -23,8 +23,8 @@
     <aside class="sidebar">
       <nav>
         <ul>
-          <li><a href="/eventos" class="nav-link active" data-section="todos-eventos">Todos os Eventos</a></li>
-          <li><a href="/inscricoes/inscritos" class="nav-link" data-section="inscritos">Eventos Inscritos</a></li>
+          <li><a href="/eventos" class="nav-link" data-section="todos-eventos">Todos os Eventos</a></li>
+          <li><a href="/inscricoes/inscritos" class="nav-link active" data-section="inscritos">Eventos Inscritos</a></li>
           <li><a href="#" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
           <li><a href="/usuarios/perfil" class="nav-link" data-section="perfil">Perfil</a></li>
           <li><a href="/logout" class="nav-link logout">Logout</a></li>
@@ -33,15 +33,14 @@
     </aside>
 
     <main class="content">
-        <div id="todos-eventos" class="section active">
-            <h1>Todos os Eventos</h1>
+        <div id="meus-eventos" class="section active">
+            <h1>Meus Eventos</h1>
             <div class="events-grid" id="events-container">
             <% if (eventos.length === 0) { %>
-                <p>Nenhum evento encontrado.</p>
+                <p>Você ainda não se inscreveu em nenhum evento.</p>
             <% } else { %>
                 <% eventos.forEach(evento => { %>
                 <div class="event-card clickable"
-                    data-id="<%= evento.id %>"
                     data-nome="<%= evento.nome %>"
                     data-data="<%= new Date(evento.data).toLocaleString('pt-BR') %>"
                     data-entidade="<%= evento.entidade_nome || 'Não informada' %>"
@@ -68,18 +67,13 @@
                 <p><strong>Local:</strong> <span id="detail-local"></span></p>
                 <p><strong>Duração:</strong> <span id="detail-duracao"></span> horas</p>
                 <p><strong>Descrição:</strong> <span id="detail-descricao"></span></p>
-                <button class="subscribe-btn" id="registration" type="submit">Inscrever-se</button>
                 </div>
             </div>
         </div>
 
         <script>
-            let selectedEventId = null;
-
             document.querySelectorAll('.clickable').forEach(card => {
                 card.addEventListener('click', () => {
-                    selectedEventId = card.dataset.id;
-
                     document.getElementById('detail-title').innerText = card.dataset.nome;
                     document.getElementById('detail-date').innerText = card.dataset.data;
                     document.getElementById('detail-entidade').innerText = card.dataset.entidade;
@@ -100,40 +94,6 @@
                     document.getElementById('event-modal').style.display = 'none';
                 }
             });
-
-            document.getElementById('registration').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/inscricoes', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        evento_id: selectedEventId,
-                        usuario_id: "<%= user ? user.id : '' %>"
-                    })
-                });
-
-                if (!response.ok) {
-                    const data = await response.json();
-                    
-                    if (data.error.includes('já está inscrito')) {
-                        alert('Você já está inscrito neste evento!');
-                    } else {
-                        alert('Erro ao se inscrever: ' + data.error);
-                    }
-
-                    return;
-                }
-
-
-                alert('Inscrição realizada com sucesso!');
-                document.getElementById('event-modal').style.display = 'none';
-            } catch (err) {
-                alert('Erro inesperado ao se inscrever.');
-                console.error(err);
-            }
-        });
         </script>
     </main>
     </div>

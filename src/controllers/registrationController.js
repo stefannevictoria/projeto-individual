@@ -49,5 +49,17 @@ module.exports = {
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
+  },
+
+  async listUserEvents(req, res) {
+    try {
+      const usuarioId = req.session.user.id;
+      const eventos = await registrationService.findByUserId(usuarioId);
+      res.render('registration', { eventos, user: req.session.user });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Erro ao carregar eventos do usuário');
+    }
   }
+
 };

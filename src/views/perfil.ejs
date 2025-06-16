@@ -22,7 +22,7 @@
           <nav>
             <ul>
               <li><a href="/eventos" class="nav-link" data-section="todos-eventos">Todos os Eventos</a></li>
-              <li><a href="#" class="nav-link" data-section="inscritos">Inscritos</a></li>
+              <li><a href="/inscricoes/inscritos" class="nav-link" data-section="inscritos">Eventos Inscritos</a></li>
               <li><a href="#" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
               <li><a href="/usuarios/perfil" class="nav-link active" data-section="perfil">Perfil</a></li>
               <li><a href="/logout" class="nav-link logout">Logout</a></li>
@@ -69,7 +69,6 @@
         const linkEntityBtn = document.getElementById("link-entity-btn");
         const linkedEntitiesDiv = document.getElementById("linked-entities");
 
-        // Carrega entidades para o select
         async function carregarEntidades() {
           try {
             const res = await fetch('/entidades/api/entidades');
@@ -85,7 +84,6 @@
           }
         }
 
-        // Carrega entidades já vinculadas
         async function carregarEntidadesVinculadas() {
           linkedEntitiesDiv.innerHTML = "";
           try {
@@ -101,7 +99,6 @@
               linkedEntitiesDiv.appendChild(div);
             });
 
-            // Eventos de clique nos botões de desvincular
             document.querySelectorAll(".desvincular-btn").forEach(btn => {
               btn.addEventListener("click", async () => {
                 const id = btn.getAttribute("data-id");
