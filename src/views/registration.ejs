@@ -40,14 +40,28 @@
                 <% eventos.forEach(evento => { %>
                 <div class="event-card clickable"
                     data-nome="<%= evento.nome %>"
-                    data-data="<%= new Date(evento.data).toLocaleString('pt-BR') %>"
+                    data-data="<%= new Date(evento.data).toLocaleString('pt-BR', { 
+                        day: '2-digit', 
+                        month: '2-digit', 
+                        year: 'numeric', 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    }) %>"
                     data-entidade="<%= evento.entidade_nome || 'Não informada' %>"
                     data-descricao="<%= evento.descricao || 'Sem descrição' %>"
                     data-local="<%= evento.local || 'Local não informado' %>"
                     data-duracao="<%= evento.duracao_horas || 'Duração não informada' %>">
 
                     <h2><%= evento.nome %></h2>
-                    <p><strong>Data:</strong> <%= new Date(evento.data).toLocaleString('pt-BR') %></p>
+                    <p><strong>Data:</strong> 
+                        <%= new Date(evento.data).toLocaleString('pt-BR', { 
+                                day: '2-digit', 
+                                month: '2-digit', 
+                                year: 'numeric', 
+                                hour: '2-digit', 
+                                minute: '2-digit' 
+                        }) %>
+                    </p>
                     <p><strong>Entidade:</strong> <%= evento.entidade_nome || 'Não informada' %></p>
                 </div>
                 <% }) %>
