@@ -19,6 +19,10 @@ class EventService {
     }
   }
 
+  async getEventsByOrganizer(userId) {
+    return await eventRepository.findByUserId(userId);
+  }
+
   async create(eventData) {
     try {
       return await eventRepository.create(eventData);

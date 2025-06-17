@@ -25,6 +25,22 @@ class EventRepository {
         return result.rows.length ? new eventModel(result.rows[0]) : null;
     }
 
+    async findByUserId(userId) {
+        const result = await db.query(`
+            SELECT e.*, ent.nome AS entidade_nome
+            FROM evento e
+            JOIN entidade_usuario eu ON e.entidade_id = eu.entidade_id
+            LEFT JOIN entidade ent ON e.entidade_id = ent.id
+            WHERE eu.usuario_id = $1
+        `, [userId]);
+
+        return result.rows.map(row => {
+            const evento = new eventModel(row);
+            evento.entidade_nome = row.entidade_nome;
+            return evento;
+        });
+    }
+
     async create(event) {
         try {
             const result = await db.query(

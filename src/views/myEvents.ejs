@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Meus Eventos - Certifica</title>
+    <title>certifica</title>
     <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/dashboardStyle.css" />
+    <link rel="stylesheet" href="/css/myEventStyle.css" />
 </head>
 <body>
     <header>
@@ -21,8 +21,8 @@
       <nav>
         <ul>
           <li><a href="/eventos" class="nav-link" data-section="todos-eventos">Todos os Eventos</a></li>
-          <li><a href="/inscricoes/inscritos" class="nav-link active" data-section="inscritos">Eventos Inscritos</a></li>
-          <li><a href="/eventos/meus-eventos" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
+          <li><a href="/inscricoes/inscritos" class="nav-link" data-section="inscritos">Eventos Inscritos</a></li>
+          <li><a href="/eventos/meus-eventos" class="nav-link active" data-section="meus-eventos">Meus Eventos</a></li>
           <li><a href="/usuarios/perfil" class="nav-link" data-section="perfil">Perfil</a></li>
           <li><a href="/logout" class="nav-link logout">Logout</a></li>
         </ul>
@@ -30,15 +30,19 @@
     </aside>
 
     <main class="content">
-        <div id="inscritos" class="section active">
-            <h1>Eventos Inscritos</h1>
-            <p>Aqui serão mostrados os eventos em que você se inscreveu.</p>
+        <div id="todos-eventos" class="section active">
+            <div class="my-events-header">
+                <h1>Meus Eventos</h1>
+                <a href="/eventos/novo" class="create-btn">Criar Novo Evento</a>
+            </div>
+            <p>Aqui é possível visualizar seus eventos e criar novos.</p>
             <div class="events-grid" id="events-container">
             <% if (eventos.length === 0) { %>
-                <p>Você ainda não se inscreveu em nenhum evento.</p>
+                <p>Nenhum evento encontrado.</p>
             <% } else { %>
                 <% eventos.forEach(evento => { %>
                 <div class="event-card clickable"
+                    data-id="<%= evento.id %>"
                     data-nome="<%= evento.nome %>"
                     data-data="<%= new Date(evento.data).toLocaleString('pt-BR') %>"
                     data-entidade="<%= evento.entidade_nome || 'Não informada' %>"
@@ -49,6 +53,7 @@
                     <h2><%= evento.nome %></h2>
                     <p><strong>Data:</strong> <%= new Date(evento.data).toLocaleString('pt-BR') %></p>
                     <p><strong>Entidade:</strong> <%= evento.entidade_nome || 'Não informada' %></p>
+                    <a href="/eventos/<%= evento.id %>/editar" class="edit-btn">Editar</a>
                 </div>
                 <% }) %>
             <% } %>
@@ -65,13 +70,26 @@
                 <p><strong>Local:</strong> <span id="detail-local"></span></p>
                 <p><strong>Duração:</strong> <span id="detail-duracao"></span> horas</p>
                 <p><strong>Descrição:</strong> <span id="detail-descricao"></span></p>
+
+                    <div class="actions">
+                    <a id="edit-link" href="#" class="edit-btn">Editar</a>
+                    <form id="delete-form" method="POST" action="">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <script>
+            let selectedEventId = null;
+
             document.querySelectorAll('.clickable').forEach(card => {
                 card.addEventListener('click', () => {
+                    selectedEventId = card.dataset.id;
+
                     document.getElementById('detail-title').innerText = card.dataset.nome;
                     document.getElementById('detail-date').innerText = card.dataset.data;
                     document.getElementById('detail-entidade').innerText = card.dataset.entidade;
@@ -80,6 +98,8 @@
                     document.getElementById('detail-duracao').innerText = card.dataset.duracao;
 
                     document.getElementById('event-modal').style.display = 'block';
+                    document.getElementById('edit-link').href = `/eventos/${selectedEventId}/editar`;
+                    document.getElementById('delete-form').action = `/eventos/${selectedEventId}?_method=DELETE`;
                 });
             });
 

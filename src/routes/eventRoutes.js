@@ -21,6 +21,8 @@ router.get('/api/eventos', verificarAutenticacao, async (req, res) => {
   }
 });
 
+router.get('/meus-eventos', verificarAutenticacao, eventController.meusEventos);
+
 router.get('/api/eventos/inscritos', verificarAutenticacao, async (req, res) => {
   try {
     const registrationService = require('../services/registrationService');

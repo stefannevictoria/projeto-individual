@@ -63,5 +63,18 @@ module.exports = {
     } catch (error) {
       res.status(500).json({ error: 'Erro ao carregar formulário de novo evento' });
     }
+  },
+
+  async meusEventos(req, res) {
+    try {
+      const eventos = await eventService.getEventsByOrganizer(req.session.user.id);
+      res.render('myEvents', {
+        eventos,
+        user: req.session.user
+      });
+    } catch (error) {
+      console.error("Erro ao carregar eventos do usuário:", error);
+      res.status(500).send("Erro ao carregar seus eventos");
+    }
   }
 };
