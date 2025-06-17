@@ -19,6 +19,10 @@ class EntityService {
     }
   }
 
+  async findByUserId(userId) {
+    return await entityRepository.findByUserId(userId);
+  }
+
 }
 
 module.exports = new EntityService();

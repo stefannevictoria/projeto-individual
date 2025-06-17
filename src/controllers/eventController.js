@@ -27,11 +27,23 @@ module.exports = {
 
   async create(req, res) {
     try {
-      const eventData = req.body;
-      const newEvent = await eventService.create(eventData);
-      res.status(201).json(newEvent);
+      const userId = req.session.user.id;
+      const entidades = await entityService.findByUserId(userId);
+      const entidadesIds = entidades.map(e => e.id);
+
+      const { nome, descricao, data, local, duracao_horas, entidade_id } = req.body;
+
+      if (!entidadesIds.includes(parseInt(entidade_id))) {
+        return res.status(403).send("Você não pode criar eventos para esta entidade");
+      }
+
+      const eventData = { nome, descricao, data, local, duracao_horas, entidade_id };
+      await eventService.create(eventData);
+
+      res.redirect('/eventos/meus-eventos');
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      console.error("Erro ao criar evento:", error);
+      res.status(400).send("Erro ao criar evento");
     }
   },
 
@@ -58,8 +70,8 @@ module.exports = {
 
   async newForm(req, res) {
     try {
-      const entidades = await entityService.findAll();
-      res.render('newEvent', { entidades });
+      const entidades = await entityService.findByUserId(req.session.user.id);
+      res.render('newEvent', { entidades, user: req.session.user });
     } catch (error) {
       res.status(500).json({ error: 'Erro ao carregar formulário de novo evento' });
     }

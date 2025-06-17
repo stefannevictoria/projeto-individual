@@ -12,6 +12,17 @@ class EntityRepository {
         return result.rows.length ? new entityModel(result.rows[0]) : null;
     }
 
+    async findByUserId(userId) {
+    const result = await db.query(`
+        SELECT e.*
+        FROM entidade e
+        JOIN entidade_usuario eu ON eu.entidade_id = e.id
+        WHERE eu.usuario_id = $1
+    `, [userId]);
+
+    return result.rows.map(row => new entityModel(row));
+    }
+
 }
 
 module.exports = new EntityRepository();

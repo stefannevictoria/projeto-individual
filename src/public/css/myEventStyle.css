@@ -355,3 +355,41 @@ footer {
   background-color: #4e1b49;
   transform: scale(1.05);
 }
+
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #30b0bd;
+  color: #fff;
+  border: 2px solid #2a9aa5;
+}
+
+.edit-btn:hover {
+  background-color: #2a9aa5;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: 2px solid #c14444;
+}
+
+.delete-btn:hover {
+  background-color: #c14444;
+  transform: scale(1.05);
+}
+
