@@ -287,18 +287,24 @@ No momento, qualquer usuário pode criar um novo evento. Entretanto, quando o si
 
 ---
 
-## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
+## <a name="c4"></a>4. Desenvolvimento da Aplicação Web 
 
-### 4.1 Demonstração do Sistema Web (Semana 8)
+### 4.1 Demonstração do Sistema Web
 
 *VIDEO: Insira o link do vídeo demonstrativo nesta seção*
 *Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
 
-### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+### 4.2 Conclusões e Trabalhos Futuros
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+O projeto Certifica apresenta uma solução inicial funcional para a gestão de eventos e perfis de usuários, permitindo a criação e visualização dos eventos de maneira organizada e intuitiva. Entre os pontos fortes, destacam-se a interface amigável para visualização dos eventos e a estrutura básica para cadastro e autenticação de usuários, o que já proporciona uma experiência inicial consistente para os organizadores e participantes.
 
+No entanto, o sistema ainda apresenta algumas limitações que podem ser aprimoradas nas próximas versões. Um ponto importante que ficou pendente é a implementação de uma funcionalidade de check-in nos eventos, que permita confirmar a presença dos inscritos e, consequentemente, a geração automática de certificados, que ficariam disponíveis para download diretamente no site. Essa funcionalidade aumentaria o valor prático da plataforma para os usuários.
+
+Além disso, a parte de criação de eventos carece de funcionalidades essenciais, como a possibilidade de editar e deletar eventos já criados, garantindo maior controle e flexibilidade para os organizadores. Também é necessário melhorar a gestão de permissões, de modo que apenas usuários vinculados a uma entidade autorizada possam criar e gerenciar eventos, aumentando a segurança e a organização da plataforma.
+
+Outro ponto a ser aprimorado é o sistema de logout, que atualmente apenas redireciona a página, mas não encerra efetivamente a sessão do usuário, deixando a conta ainda ativa. Implementar um logout que invalide a sessão garantirá maior segurança e confiabilidade para os usuários.
+
+Por fim, sugere-se a ampliação das interfaces com maior separação entre as funcionalidades para diferentes perfis de usuários (organizadores, inscritos e visitantes), possibilitando uma experiência mais customizada e eficiente.
 
 
 ## <a name="c5"></a>5. Referências
