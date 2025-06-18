@@ -17,6 +17,7 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
+    "method-override": "^3.0.0",
     "nodemon": "^3.1.10",
     "pg": "^8.16.0"
   }

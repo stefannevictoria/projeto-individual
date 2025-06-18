@@ -27,7 +27,13 @@
           <li><a href="/inscricoes/inscritos" class="nav-link" data-section="inscritos">Eventos Inscritos</a></li>
           <li><a href="/eventos/meus-eventos" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
           <li><a href="/usuarios/perfil" class="nav-link" data-section="perfil">Perfil</a></li>
-          <li><a href="/logout" class="nav-link logout">Logout</a></li>
+          <li><a href="/" class="nav-link logout" onclick="return clearCache()">Logout</a>
+            <script>
+            function clearCache() {
+                if ('caches' in window) caches.keys().then(names => names.forEach(name => caches.delete(name)));
+                return true;
+            }
+            </script></li>
         </ul>
       </nav>
     </aside>
@@ -83,7 +89,11 @@
                 <p><strong>Local:</strong> <span id="detail-local"></span></p>
                 <p><strong>Duração:</strong> <span id="detail-duracao"></span> horas</p>
                 <p><strong>Descrição:</strong> <span id="detail-descricao"></span></p>
-                <button class="subscribe-btn" id="registration" type="submit">Inscrever-se</button>
+                <% if (user) { %>
+                    <button class="subscribe-btn" id="registration" type="submit">Inscrever-se</button>
+                <% } else { %>
+                    <p style="color: red; font-weight: bold;">Faça login para se inscrever.</p>
+                <% } %>
                 </div>
             </div>
         </div>
@@ -116,39 +126,40 @@
                 }
             });
 
-            document.getElementById('registration').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/inscricoes', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        evento_id: selectedEventId,
-                        usuario_id: "<%= user ? user.id : '' %>"
-                    })
-                });
+            const registrationBtn = document.getElementById('registration');
+            if (registrationBtn) {
+                registrationBtn.addEventListener('click', async () => {
+                    try {
+                        const response = await fetch('/inscricoes', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                evento_id: selectedEventId,
+                                usuario_id: "<%= user ? user.id : '' %>"
+                            })
+                        });
 
-                if (!response.ok) {
-                    const data = await response.json();
-                    
-                    if (data.error.includes('já está inscrito')) {
-                        alert('Você já está inscrito neste evento!');
-                    } else {
-                        alert('Erro ao se inscrever: ' + data.error);
+                        const data = await response.json();
+
+                        if (!response.ok) {
+                            if (data.error && data.error.includes('já está inscrito')) {
+                                alert('Você já está inscrito neste evento!');
+                            } else {
+                                alert('Erro ao se inscrever: ' + (data.error || 'Desconhecido'));
+                            }
+                            return;
+                        }
+
+                        alert('Inscrição realizada com sucesso!');
+                        document.getElementById('event-modal').style.display = 'none';
+                    } catch (err) {
+                        alert('Erro inesperado ao se inscrever.');
+                        console.error(err);
                     }
-
-                    return;
-                }
-
-
-                alert('Inscrição realizada com sucesso!');
-                document.getElementById('event-modal').style.display = 'none';
-            } catch (err) {
-                alert('Erro inesperado ao se inscrever.');
-                console.error(err);
+                });
             }
-        });
         </script>
     </main>
     </div>

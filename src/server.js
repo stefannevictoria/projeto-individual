@@ -12,6 +12,8 @@ const indexRoutes = require('./routes/index');
 const userController = require('./controllers/userController')
 const session = require('express-session');
 
+const methodOverride = require('method-override');
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,15 +28,15 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(methodOverride('_method'));
 
 app.get('/login', (req, res) => res.render('login'));
 app.post('/login', (req, res) => userController.login(req, res));
 
 app.use((req, res, next) => {
-  res.locals.user = req.session.user;
+  res.locals.user = req.session.user || null;
   next();
 });
-
 
 app.use('/', indexRoutes);
 

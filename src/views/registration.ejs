@@ -24,7 +24,13 @@
           <li><a href="/inscricoes/inscritos" class="nav-link active" data-section="inscritos">Eventos Inscritos</a></li>
           <li><a href="/eventos/meus-eventos" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
           <li><a href="/usuarios/perfil" class="nav-link" data-section="perfil">Perfil</a></li>
-          <li><a href="/logout" class="nav-link logout">Logout</a></li>
+          <li><a href="/" class="nav-link logout" onclick="return clearCache()">Logout</a>
+            <script>
+            function clearCache() {
+                if ('caches' in window) caches.keys().then(names => names.forEach(name => caches.delete(name)));
+                return true;
+            }
+            </script></li>
         </ul>
       </nav>
     </aside>

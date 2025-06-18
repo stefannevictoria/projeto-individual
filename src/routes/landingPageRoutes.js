@@ -2,10 +2,21 @@ const express = require('express');
 const router = express.Router();
 const entityService = require('../services/entityService');
 const landingController = require('../controllers/landingController');
-
+const userService = require('../services/userService');
 
 router.get('/', async (req, res) => {
-  res.render('landingPage');
+  try {
+    let user = null;
+
+    if (req.session.user && req.session.user.id) {
+      user = await userService.findById(req.session.user.id);
+    }
+
+    res.render('landingPage', { user });
+  } catch (error) {
+    console.error("Erro ao buscar usuário por ID:", error);
+    res.render('landingPage', { user: null });
+  }
 });
 
 router.get('/cadastro', async (req, res) => {

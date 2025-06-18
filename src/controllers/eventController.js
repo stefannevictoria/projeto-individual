@@ -62,9 +62,10 @@ module.exports = {
     try {
       const { id } = req.params;
       await eventService.delete(id);
-      res.status(204).send();
+      res.redirect('/eventos/meus-eventos'); 
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      console.error('Erro ao deletar evento:', error);
+      res.status(400).send('Erro ao deletar evento');
     }
   },
 

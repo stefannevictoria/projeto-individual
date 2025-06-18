@@ -24,7 +24,13 @@
           <li><a href="/inscricoes/inscritos" class="nav-link" data-section="inscritos">Eventos Inscritos</a></li>
           <li><a href="/eventos/meus-eventos" class="nav-link active" data-section="meus-eventos">Meus Eventos</a></li>
           <li><a href="/usuarios/perfil" class="nav-link" data-section="perfil">Perfil</a></li>
-          <li><a href="/logout" class="nav-link logout">Logout</a></li>
+          <li><a href="/" class="nav-link logout" onclick="return clearCache()">Logout</a>
+            <script>
+            function clearCache() {
+                if ('caches' in window) caches.keys().then(names => names.forEach(name => caches.delete(name)));
+                return true;
+            }
+            </script></li>
         </ul>
       </nav>
     </aside>
@@ -67,7 +73,6 @@
                         }) %>
                     </p>
                     <p><strong>Entidade:</strong> <%= evento.entidade_nome || 'Não informada' %></p>
-                    <a href="/eventos/<%= evento.id %>/editar" class="edit-btn">Editar</a>
                 </div>
                 <% }) %>
             <% } %>
@@ -84,14 +89,6 @@
                 <p><strong>Local:</strong> <span id="detail-local"></span></p>
                 <p><strong>Duração:</strong> <span id="detail-duracao"></span> horas</p>
                 <p><strong>Descrição:</strong> <span id="detail-descricao"></span></p>
-
-                    <div class="actions">
-                    <a id="edit-link" href="#" class="edit-btn">Editar</a>
-                    <form id="delete-form" method="POST" action="">
-                        <input type="hidden" name="_method" value="DELETE" />
-                        <button type="submit" class="delete-btn">Excluir</button>
-                    </form>
-                    </div>
 
                 </div>
             </div>
@@ -112,8 +109,6 @@
                     document.getElementById('detail-duracao').innerText = card.dataset.duracao;
 
                     document.getElementById('event-modal').style.display = 'block';
-                    document.getElementById('edit-link').href = `/eventos/${selectedEventId}/editar`;
-                    document.getElementById('delete-form').action = `/eventos/${selectedEventId}?_method=DELETE`;
                 });
             });
 
