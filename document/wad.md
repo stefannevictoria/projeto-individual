@@ -291,8 +291,111 @@ No momento, qualquer usuário pode criar um novo evento. Entretanto, quando o si
 
 ### 4.1 Demonstração do Sistema Web
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+Esta seção mostra o desenvolvimento do sistema web completo.
+
+Vídeo demonstrativo: <>
+
+O sistema Certifica foi desenvolvido como uma plataforma web para organização e participação em eventos acadêmicos, com foco em facilitar a geração e gestão de certificados. A seguir, apresentamos as principais telas e funcionalidades implementadas, junto de uma breve explicação técnica do funcionamento de cada parte.
+
+A primeira tela acessada é a landing page, que serve como uma introdução ao sistema. Ela direciona os usuários para realizar login ou cadastro.
+
+<div align="center">
+  <sub> Figura 8: Landing Page </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287446/Captura_de_tela_2025-06-18_195713_u2manx.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+A **tela de login** permite que usuários registrados acessem o sistema. No backend, essa funcionalidade utiliza sessões com `express-session`. Quando um usuário se autentica com sucesso, seus dados são armazenados na sessão, permitindo que o sistema reconheça o usuário em diferentes páginas.
+
+<div align="center">
+  <sub> Figura 9: Tela de Login </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287537/Captura_de_tela_2025-06-18_195845_q3cczb.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+A **tela de cadastro** permite a criação de uma nova conta de usuário. Inicialmente, a vinculação a uma entidade era feita aqui, mas esse processo foi transferido para a página de perfil para deixar o cadastro mais simples e organizado.
+
+<div align="center">
+  <sub> Figura 10: Tela de Cadastro </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287617/Captura_de_tela_2025-06-18_200004_ykw8m2.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+O sistema Certifica conta com uma barra lateral de navegação que facilita o acesso às principais funcionalidades da plataforma. Essa barra inclui os links para:
+
+- Todos os eventos
+- Meus eventos
+- Eventos inscritos
+- Perfil
+- Logout
+
+Foi utilizado o mesmo código para a barra lateral, como é possível observar abaixo. Ele foi utilizado em todos os arquivos .ejs, apenas alterando a colocação da tela que estava atualmente selecionada pela classe "nav-link active".
+
+```.ejs
+    <li><a href="/eventos" class="nav-link" data-section="todos-eventos">Todos os Eventos</a></li>
+    <li><a href="/inscricoes/inscritos" class="nav-link" data-section="inscritos">Eventos Inscritos</a></li>
+    <li><a href="/eventos/meus-eventos" class="nav-link" data-section="meus-eventos">Meus Eventos</a></li>
+    <li><a href="/usuarios/perfil" class="nav-link active" data-section="perfil">Perfil</a></li>
+    <li><a href="/" class="nav-link logout" onclick="return clearCache()">Logout</a>
+```
+Cada uma dessas seções possui uma interface dedicada:
+
+Na tela **Todos os eventos**, o usuário pode visualizar uma lista dos eventos disponíveis na plataforma. A lista foi reformulada para exibir apenas informações básicas, sendo possível clicar em um evento para abrir um modal com detalhes completos, como data, entidade organizadora, local, duração e descrição.
+
+<div align="center">
+  <sub> Figura 8: Tela de todos os eventos </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750286737/Captura_de_tela_2025-06-18_194501_sxewtw.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+<div align="center">
+  <sub> Figura 9: Tela de todos os eventos com detalhes </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750286809/Captura_de_tela_2025-06-18_194636_lqq2y7.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+A tela **Meus eventos** exibe os eventos que o usuário criou ou que pertencem à entidade da qual ele faz parte, possibilitando um melhor controle e visualização.
+
+<div align="center">
+  <sub> Figura 10: Tela de Meus Eventos </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750286899/Captura_de_tela_2025-06-18_194808_s3vxcw.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+Nessa tela, também há um botão de "Criar Novo Evento" que redireciona para a seguinte tela: 
+
+<div align="center">
+  <sub> Figura 11: Tela de criar novo evento </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287028/Captura_de_tela_2025-06-18_195015_xhyjxl.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+Em **Eventos inscritos**, o usuário encontra a lista dos eventos nos quais se inscreveu, facilitando o acompanhamento de sua participação.
+
+<div align="center">
+  <sub> Figura 12: Tela de eventos inscritos </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287116/Captura_de_tela_2025-06-18_195139_zmaadj.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+A seção **Perfil** reúne as informações pessoais do usuário e a vinculação com a entidade. A mudança mais significativa aqui foi a transferência da gestão da vinculação com a entidade do cadastro para essa página, trazendo maior organização e clareza.
+
+<div align="center">
+  <sub> Figura 13: Tela de perfil </sub>
+
+![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287201/Captura_de_tela_2025-06-18_195309_tpuaku.png) 
+  <sup> Fonte: Autoral, 2025</sup>
+</div>
+
+Por fim, o botão **Logout** realiza o redirecionamento para a página inicial, embora o logout real ainda precise ser implementado para encerrar a sessão do usuário.
 
 ### 4.2 Conclusões e Trabalhos Futuros
 
