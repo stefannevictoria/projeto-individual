@@ -293,7 +293,7 @@ No momento, qualquer usuário pode criar um novo evento. Entretanto, quando o si
 
 Esta seção mostra o desenvolvimento do sistema web completo.
 
-Vídeo demonstrativo: <>
+Vídeo demonstrativo: <https://youtu.be/3phxPsm3l18?si=Sy8CxSo9QbIoNYDN>
 
 O sistema Certifica foi desenvolvido como uma plataforma web para organização e participação em eventos acadêmicos, com foco em facilitar a geração e gestão de certificados. A seguir, apresentamos as principais telas e funcionalidades implementadas, junto de uma breve explicação técnica do funcionamento de cada parte.
 
@@ -346,14 +346,14 @@ Cada uma dessas seções possui uma interface dedicada:
 Na tela **Todos os eventos**, o usuário pode visualizar uma lista dos eventos disponíveis na plataforma. A lista foi reformulada para exibir apenas informações básicas, sendo possível clicar em um evento para abrir um modal com detalhes completos, como data, entidade organizadora, local, duração e descrição.
 
 <div align="center">
-  <sub> Figura 8: Tela de todos os eventos </sub>
+  <sub> Figura 11: Tela de todos os eventos </sub>
 
 ![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750286737/Captura_de_tela_2025-06-18_194501_sxewtw.png) 
   <sup> Fonte: Autoral, 2025</sup>
 </div>
 
 <div align="center">
-  <sub> Figura 9: Tela de todos os eventos com detalhes </sub>
+  <sub> Figura 12: Tela de todos os eventos com detalhes </sub>
 
 ![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750286809/Captura_de_tela_2025-06-18_194636_lqq2y7.png) 
   <sup> Fonte: Autoral, 2025</sup>
@@ -362,7 +362,7 @@ Na tela **Todos os eventos**, o usuário pode visualizar uma lista dos eventos d
 A tela **Meus eventos** exibe os eventos que o usuário criou ou que pertencem à entidade da qual ele faz parte, possibilitando um melhor controle e visualização.
 
 <div align="center">
-  <sub> Figura 10: Tela de Meus Eventos </sub>
+  <sub> Figura 13: Tela de Meus Eventos </sub>
 
 ![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750286899/Captura_de_tela_2025-06-18_194808_s3vxcw.png) 
   <sup> Fonte: Autoral, 2025</sup>
@@ -371,7 +371,7 @@ A tela **Meus eventos** exibe os eventos que o usuário criou ou que pertencem �
 Nessa tela, também há um botão de "Criar Novo Evento" que redireciona para a seguinte tela: 
 
 <div align="center">
-  <sub> Figura 11: Tela de criar novo evento </sub>
+  <sub> Figura 14: Tela de criar novo evento </sub>
 
 ![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287028/Captura_de_tela_2025-06-18_195015_xhyjxl.png) 
   <sup> Fonte: Autoral, 2025</sup>
@@ -380,7 +380,7 @@ Nessa tela, também há um botão de "Criar Novo Evento" que redireciona para a 
 Em **Eventos inscritos**, o usuário encontra a lista dos eventos nos quais se inscreveu, facilitando o acompanhamento de sua participação.
 
 <div align="center">
-  <sub> Figura 12: Tela de eventos inscritos </sub>
+  <sub> Figura 15: Tela de eventos inscritos </sub>
 
 ![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287116/Captura_de_tela_2025-06-18_195139_zmaadj.png) 
   <sup> Fonte: Autoral, 2025</sup>
@@ -389,7 +389,7 @@ Em **Eventos inscritos**, o usuário encontra a lista dos eventos nos quais se i
 A seção **Perfil** reúne as informações pessoais do usuário e a vinculação com a entidade. A mudança mais significativa aqui foi a transferência da gestão da vinculação com a entidade do cadastro para essa página, trazendo maior organização e clareza.
 
 <div align="center">
-  <sub> Figura 13: Tela de perfil </sub>
+  <sub> Figura 16: Tela de perfil </sub>
 
 ![Novo Evento](https://res.cloudinary.com/dwewomj84/image/upload/v1750287201/Captura_de_tela_2025-06-18_195309_tpuaku.png) 
   <sup> Fonte: Autoral, 2025</sup>
