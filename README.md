@@ -77,53 +77,49 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 💻 Como inicializar o projeto
 
-Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
+1- _Clone o repositório_:
 
-1. Clone o repositório:
-    ```sh
-    git clone <https://github.com/stefannevictoria/projeto-individual.git>
-    ```
-2. Navegue até o diretório do projeto:
-    ```sh
-    cd projeto-individual
-    ```
+```bash
+git clone https://github.comstefannevictoria/projeto-individual.git
+cd PROJETO-INDIVIDUAL
+```
 
-3. No "terminal", digite este comando para instalar as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto.
+2- _Instale as dependências. Confira se o Node.js esta instalado. Após isso, execute:_
 
-    ```sh
-    npm install
-    ```
+```bash
+npm install
+```
 
-4. Para inicializar o servidor, digite o seguinte comando: 
+3- _Para garantir o correto funcionamento do projeto, é necessário criar um arquivo .env na raiz, caso ainda não exista. Dentro dele, defina as variáveis de ambiente com as credenciais do seu banco de dados no Supabase, seguindo o modelo abaixo:_
 
-    ```sh
-    node server.js
-    ```
+```bash
+DB_USER= "seu_usuario"
+DB_HOST= "seu_host"
+DB_DATABASE= "seu_banco"
+DB_PASSWORD= "sua_senha"
+DB_PORT= "sua_porta"
+DB_SSL= "true"
+PORT= 3000
+```
 
-    ou
+4- _Execute o script de inicialização do banco de dados: Certifique-se de que o banco de dados PostgreSQL está configurado e rodando. Após isso, execute o script SQL para criar as tabelas:_
 
-    ```sh
-    npm run start
-    ```
+```bash
+node scripts/runSQLScript.js
+```
 
-5. Para realizar a migração, digite o seguinte comando: 
-    ```sh
-    node scripts/runSQLScript.js
-    ```
-    ou 
+5- _Inicie o servidor: Execute o comando abaixo:_
 
-    ```sh
-    npm run migrations
-    ```
+```bash
+npm start
+```
 
-6. Para realizar os testes de endpoints (pré requisitos: migrações feitas e seridor inicializado)
- **Configure o Postman**:
-   ```sh
-   - Método: GET/POST/PUT/DELETE
-   - URL: http://localhost:3000/[endpoint] (ex: /fregueses)
-   - Body (para POST/PUT): JSON com os dados
-   ```
-  Para mais detalhes sobre os endpoins, [clique aqui](https://github.com/stefannevictoria/projeto-individual/blob/main/documentos/wad.md#c3)
+6- _Acesse a aplicação: Abra o navegador e acesse:_
+
+```bash
+http://localhost:3000
+```
+
 
 ## 🗃 Histórico de lançamentos
 
